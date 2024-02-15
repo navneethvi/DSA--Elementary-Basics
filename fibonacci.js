@@ -5,5 +5,4 @@ function fibonacci(n) {
     }
     return fib
 }
-
-console.log(fibonacci(5))
+console.log(fibonacci(4))
