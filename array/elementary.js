@@ -39,6 +39,25 @@
 //     return -1
 // }
 
+// Array Update
 
+// function myArray(arr){
+//     let pos = 2
+//     let val = 10
+//     arr[pos-1] = val
+//     console.log(arr);
+// }
 
+// function will output pairs of numbers whose sum equals val
+
+// function myArray(arr){
+//     let val = 10
+//     for(i=0;i<arr.length;i++){
+//         for(j=i+1;j<arr.length;j++){
+//             if(arr[i] + arr[j] === val){
+//                 console.log(arr[i], " ", arr[j]);
+//             }
+//         }
+//     }
+// }
 
