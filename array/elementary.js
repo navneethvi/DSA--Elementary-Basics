@@ -18,5 +18,17 @@
 //     console.log(arr);
 // }   
 
+// Array Deletion
+
+// function myArray(arr){
+//     let pos = 3
+//     for(i=pos;i<arr.length;i++){
+//         arr[i] = arr[i+1]
+//     }
+//     arr.length = arr.length-1
+//     console.log(arr);
+// }
+
+
 
 
