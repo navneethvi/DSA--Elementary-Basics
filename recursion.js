@@ -1,5 +1,5 @@
 function countdown(n) {
-    console.log(n);
+    console.log(n)
     if (n <= 1) {
         return
     } else {
@@ -18,7 +18,7 @@ function fibonacci(n) {
 
 function logs(n) {
     for (let i = 0; i <= n; i++) {
-        console.log(fibonacci(i));
+        console.log(fibonacci(i))
     }
 }
 
@@ -28,4 +28,4 @@ function logs(n) {
 function factorial(n){
     return n<2 ? 1 : n * factorial(n-1)
 }
-// console.log(factorial(10));
+// console.log(factorial(10))
