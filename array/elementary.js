@@ -29,6 +29,16 @@
 //     console.log(arr);
 // }
 
+// Array Search 
+
+// function myArray(arr) {
+//     let elem = 5
+//     for (i = 0; i < arr.length; i++) {
+//         if(arr[i]===elem) return i
+//     }
+//     return -1
+// }
+
 
 
 
