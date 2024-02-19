@@ -373,12 +373,33 @@ class LinkedList {
             node.next = this.head
             this.head = node
         }
+        this.size++
+    }
+
+    insert(index, value){
+        if(index < 0 || index > this.getSize()){
+            return
+        }
+
+        if(index === 0){
+            this.prepend(value)
+        }else{
+            const node = new Node(value)
+            let prev = this.head
+            for(let i=0;i<index-1;i++){
+                prev = prev.next
+            }
+            node.next = prev.next
+            prev.next = node
+        }
         this.size ++
     }
+
 }
 
 const list = new LinkedList()
 list.append(10)
 list.append(20)
 list.prepend(5)
+list.insert(2, 300)
 list.print()
