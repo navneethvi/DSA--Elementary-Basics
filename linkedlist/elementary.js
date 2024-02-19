@@ -395,6 +395,27 @@ class LinkedList {
         this.size ++
     }
 
+    removeAt(index){
+        if(index < 0 || index > this.getSize() || this.head === null){
+            return
+        }
+
+        if(index === 0){
+            this.head = this.head.next
+        }else{
+            let prev = null
+            let curr = this.head
+            let count = 0
+            while(count<index){
+                prev = curr
+                curr = curr.next
+                count++
+            }
+            prev.next = curr.next
+        }
+        this.size --
+    }
+
 }
 
 const list = new LinkedList()
@@ -402,4 +423,6 @@ list.append(10)
 list.append(20)
 list.prepend(5)
 list.insert(2, 300)
+list.print()
+list.removeAt(1)
 list.print()
