@@ -451,6 +451,22 @@ class LinkedList {
         }
         return { value: null, count: -1 };
     }
+
+    reverse(){
+        if(!this.head || !this.head.next){
+            return
+        }
+        let prev = null
+        let curr = this.head
+        let next = null
+        while(curr){
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.head = prev
+    }
 }
 
 const list = new LinkedList()
@@ -459,7 +475,9 @@ list.append(20)
 list.prepend(5)
 list.insert(2, 300)
 list.print()
-list.removeAt(1)
+// list.removeAt(1)
 // list.deleteWithValue(300)`
 list.print()
-console.log(list.search(10));
+list.reverse()
+list.print()
+// console.log(list.search(10));
