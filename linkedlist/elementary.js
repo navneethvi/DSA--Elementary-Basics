@@ -432,6 +432,25 @@ class LinkedList {
             prev = prev.next
         }
     }
+
+    search(value){
+        if(this.getSize===0){
+            return
+        }
+        if(this.head.value === value){
+            return {value : this.head.value, index : 0}
+        }
+        let curr = this.head
+        let count = 0
+        while(curr){
+            if(curr.value === value){
+               return {value : curr.value, index : count}        
+            }
+            curr = curr.next
+            count ++
+        }
+        return { value: null, count: -1 };
+    }
 }
 
 const list = new LinkedList()
@@ -443,3 +462,4 @@ list.print()
 list.removeAt(1)
 // list.deleteWithValue(300)`
 list.print()
+console.log(list.search(10));
