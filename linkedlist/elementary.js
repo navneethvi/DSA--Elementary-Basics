@@ -422,17 +422,16 @@ class LinkedList {
         if (this.head.value === value) {
             this.head = this.head.next
         }
-        let curr = this.head
-        while (curr.next) {
-            if (curr.next.value === value) {
-                curr.next = curr.next.next
+        let prev = this.head
+        while(prev.next){
+            if(prev.next.value === value){
+                prev.next = prev.next.next
                 this.size--
                 return
             }
-            curr = curr.next
+            prev = prev.next
         }
     }
-
 }
 
 const list = new LinkedList()
@@ -441,6 +440,6 @@ list.append(20)
 list.prepend(5)
 list.insert(2, 300)
 list.print()
-list.removeAt(2)
-// list.deleteWithValue(300)
+list.removeAt(1)
+// list.deleteWithValue(300)`
 list.print()
