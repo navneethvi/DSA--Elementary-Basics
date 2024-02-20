@@ -376,44 +376,71 @@ class LinkedList {
         this.size++
     }
 
-    insert(index, value){
-        if(index < 0 || index > this.getSize()){
+    insert(index, value) {
+        if (index < 0 || index > this.getSize()) {
             return
         }
 
-        if(index === 0){
+        if (index === 0) {
             this.prepend(value)
-        }else{
+        } else {
             const node = new Node(value)
             let prev = this.head
-            for(let i=0;i<index-1;i++){
+            for (let i = 0; i < index - 1; i++) {
                 prev = prev.next
             }
             node.next = prev.next
             prev.next = node
         }
-        this.size ++
+        this.size++
     }
 
-    removeAt(index){
-        if(index < 0 || index > this.getSize() || this.head === null){
+    removeAt(index) {
+        if (index < 0 || index > this.getSize() || this.head === null) {
             return
         }
 
-        if(index === 0){
+        if (index === 0) {
             this.head = this.head.next
-        }else{
+        } else {
             let prev = null
             let curr = this.head
             let count = 0
-            while(count<index){
+            while (count < index) {
                 prev = curr
                 curr = curr.next
                 count++
             }
             prev.next = curr.next
         }
-        this.size --
+        this.size--
+    }
+
+    // Insert a node after & before a node with x data
+    insertAt(value, newData) {
+        if (this.getSize() === 0) {
+            return
+        }
+
+        if (this.head.value === value) {
+            this.prepend(newData)
+            return
+        }
+        let prev = null
+        let curr = this.head
+        while(curr.next) {
+            if (curr.value === value){
+                const node = new Node(newData)
+                node.next = curr
+                prev.next = node
+                this.size++
+                return
+            }
+            prev = curr
+            curr = curr.next
+            
+        }
+
     }
 
 }
@@ -425,4 +452,5 @@ list.prepend(5)
 list.insert(2, 300)
 list.print()
 list.removeAt(1)
+list.insertAt(300,1000)
 list.print()
