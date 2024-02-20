@@ -112,13 +112,13 @@ class LinkedList {
     }
 }
 
-const list = new LinkedList()
-list.append(10)
-list.append(20)
-list.append(30)
-list.prepend(5)
-list.insert(1, 8)
+// const list = new LinkedList()
+// list.append(10)
+// list.append(20)
+// list.append(30)
+// list.prepend(5)
+// list.insert(1, 8)
 // list.remove(5)
-list.print()
-list.reverse()
-list.print()
+// list.print()
+// list.reverse()
+// list.print()
