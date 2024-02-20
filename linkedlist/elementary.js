@@ -416,31 +416,21 @@ class LinkedList {
         this.size--
     }
 
-    // Insert a node after & before a node with x data
-    insertAt(value, newData) {
-        if (this.getSize() === 0) {
-            return
-        }
+    deleteWithValue(value) {
+        if (!this.head) return
 
         if (this.head.value === value) {
-            this.prepend(newData)
-            return
+            this.head = this.head.next
         }
-        let prev = null
         let curr = this.head
-        while(curr.next) {
-            if (curr.value === value){
-                const node = new Node(newData)
-                node.next = curr
-                prev.next = node
-                this.size++
+        while (curr.next) {
+            if (curr.next.value === value) {
+                curr.next = curr.next.next
+                this.size--
                 return
             }
-            prev = curr
             curr = curr.next
-            
         }
-
     }
 
 }
@@ -451,6 +441,6 @@ list.append(20)
 list.prepend(5)
 list.insert(2, 300)
 list.print()
-list.removeAt(1)
-list.insertAt(300,1000)
+// list.removeAt(1)
+list.deleteWithValue(300)
 list.print()
