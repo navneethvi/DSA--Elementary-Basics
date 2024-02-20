@@ -396,24 +396,24 @@ class LinkedList {
     }
 
     removeAt(index) {
-        if (index < 0 || index > this.getSize() || this.head === null) {
-            return
-        }
-
-        if (index === 0) {
-            this.head = this.head.next
-        } else {
-            let prev = null
-            let curr = this.head
-            let count = 0
-            while (count < index) {
-                prev = curr
-                curr = curr.next
-                count++
-            }
-            prev.next = curr.next
-        }
-        this.size--
+       if(index < 0 || index > this.getSize() || this.head === null){
+        return
+       }
+       if(index === 0){
+        this.head = this.head.next
+        this.size --
+        return
+       }
+       let prev = null
+       let curr = this.head
+       let count = 0
+       while(count < index){
+        prev = curr
+        curr = curr.next
+        count ++
+       }
+       prev.next = curr.next
+       this.size --
     }
 
     deleteWithValue(value) {
@@ -441,6 +441,6 @@ list.append(20)
 list.prepend(5)
 list.insert(2, 300)
 list.print()
-// list.removeAt(1)
-list.deleteWithValue(300)
+list.removeAt(2)
+// list.deleteWithValue(300)
 list.print()
