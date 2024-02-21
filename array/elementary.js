@@ -62,3 +62,18 @@
 // }
 
 
+
+// SecondLargest element
+
+
+// let arr = [5, 3, 2, 5, 6, 9, 6, 8, 1]
+// function secondLargest(arr) {
+//     let uniqueArray = Array.from(new Set(arr))
+//     uniqueArray.sort((a, b)=>b-a)
+//     if (uniqueArray.length >= 2) {
+//         return uniqueArray[1]
+//     } else {
+//         return -1
+//     }
+// }
+
