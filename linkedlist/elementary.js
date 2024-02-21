@@ -587,120 +587,276 @@
 
 // Doubly LinkedList
 
-class DoublyNode {
-    constructor(value) {
-        this.prev = null
-        this.next = null
-        this.value = value
-    }
-}
+// class DoublyNode {
+//     constructor(value) {
+//         this.prev = null
+//         this.next = null
+//         this.value = value
+//     }
+// }
 
-class DoublyLinkedList {
-    constructor() {
-        this.head = null
-        this.tail = null
-        this.size = 0
-    }
+// class DoublyLinkedList {
+//     constructor() {
+//         this.head = null
+//         this.tail = null
+//         this.size = 0
+//     }
 
-    append(value) {
-        const node = new DoublyNode(value)
-        if (!this.size) {
-            this.head = node
-            this.tail = node
-        } else {
-            node.prev = this.tail
-            this.tail.next = node
-            this.tail = node
-        }
-        this.size++
-    }
+//     append(value) {
+//         const node = new DoublyNode(value)
+//         if (!this.size) {
+//             this.head = node
+//             this.tail = node
+//         } else {
+//             node.prev = this.tail
+//             this.tail.next = node
+//             this.tail = node
+//         }
+//         this.size++
+//     }
 
-    print() {
-        if (this.size === 0) {
-            console.log("list is empty");
-        } else {
-            let curr = this.head
-            let listValues = ""
-            while (curr) {
-                listValues += `${curr.value} `
-                curr = curr.next
-            }
-            console.log(listValues);
-        }
-    }
+//     print() {
+//         if (this.size === 0) {
+//             console.log("list is empty");
+//         } else {
+//             let curr = this.head
+//             let listValues = ""
+//             while (curr) {
+//                 listValues += `${curr.value} `
+//                 curr = curr.next
+//             }
+//             console.log(listValues);
+//         }
+//     }
 
-    prepend(value) {
-        const node = new DoublyNode(value)
-        if (!this.size) {
-            this.head = node
-            this.tail = node
-        } else {
-            node.next = this.head
-            this.head.prev = node
-            this.head = node
-        }
-        this.size++
-    }
+//     prepend(value) {
+//         const node = new DoublyNode(value)
+//         if (!this.size) {
+//             this.head = node
+//             this.tail = node
+//         } else {
+//             node.next = this.head
+//             this.head.prev = node
+//             this.head = node
+//         }
+//         this.size++
+//     }
 
-    deleteWithValue(value) {
-        if (!this.head) {
-            return
-        }
-        if (this.head.value === value) {
-            this.head = ths.head.next
-            return
-        }
-        let curr = this.head
-        while (curr.next) {
-            if (curr.next.value === value) {
-                curr.next = curr.next.next
-                if (curr.next) {
-                    curr.next.prev = curr
-                }
-                if (!curr.next) {
-                    this.tail = curr
-                }
-                return
-            }
-            curr = curr.next
-        }
-    }
+//     deleteWithValue(value) {
+//         if (!this.head) {
+//             return
+//         }
+//         if (this.head.value === value) {
+//             this.head = ths.head.next
+//             return
+//         }
+//         let curr = this.head
+//         while (curr.next) {
+//             if (curr.next.value === value) {
+//                 curr.next = curr.next.next
+//                 if (curr.next) {
+//                     curr.next.prev = curr
+//                 }
+//                 if (!curr.next) {
+//                     this.tail = curr
+//                 }
+//                 return
+//             }
+//             curr = curr.next
+//         }
+//     }
 
-    insert(index, value) {
-        if (index < 0 || index > this.size || this.size === 0) {
-            return
-        }
-        const node = new DoublyNode(value)
-        if (index === 0) {
-            this.prepend(value)
-        } else if(index===this.size) {
-            this.append(value)
-        }else {
-            let curr = this.head
-            let count = 0
-            while (count < index) {
-                    curr = curr.next
-                    count ++
-                }
-                node.prev = curr.prev
-                node.next = curr
-                curr.prev.next = node
-                curr.prev = node
-                this.size++
-            }
-        
-    }
-}
+//     insert(index, value) {
+//         if (index < 0 || index > this.size || this.size === 0) {
+//             return
+//         }
+//         const node = new DoublyNode(value)
+//         if (index === 0) {
+//             this.prepend(value)
+//         } else if(index===this.size) {
+//             this.append(value)
+//         }else {
+//             let curr = this.head
+//             let count = 0
+//             while (count < index) {
+//                     curr = curr.next
+//                     count ++
+//                 }
+//                 node.prev = curr.prev
+//                 node.next = curr
+//                 curr.prev.next = node
+//                 curr.prev = node
+//                 this.size++
+//             }
 
-const list = new DoublyLinkedList()
-list.append(10)
-list.append(20)
-list.prepend(5)
-list.prepend(2)
-list.print()
+//     }
+// }
+
+// const list = new DoublyLinkedList()
+// list.append(10)
+// list.append(20)
+// list.prepend(5)
+// list.prepend(2)
+// list.print()
 
 // list.deleteWithValue(10)
-list.insert(2,200)
+// list.insert(2,200)
 
 
-list.print()
+// list.print()
+
+
+// class DoublyNode {
+//     constructor(value) {
+//         this.prev = null
+//         this.value = value
+//         this.next = null
+//     }
+// }
+
+// class DoublyLinkedList {
+//     constructor(value) {
+//         this.head = null
+//         this.tail = null
+//         this.size = 0
+//     }
+
+//     print() {
+//         if (this.size === 0) {
+//             console.log("list is empty");
+//         } else {
+//             let curr = this.head
+//             let listValues = ""
+//             while (curr) {
+//                 listValues += `${curr.value} `
+//                 curr = curr.next
+//             }
+//             console.log(listValues);
+//         }
+//     }
+
+//     append(value) {
+//         const node = new DoublyNode(value)
+//         if (!this.head) {
+//             this.head = node
+//             this.tail = node
+
+//         } else {
+//             node.prev = this.tail
+//             this.tail.next = node
+//             this.tail = node
+//         }
+//         this.size++
+//     }
+
+//     prepend(value) {
+//         const node = new DoublyNode(value)
+//         if (!this.head) {
+//             this.head = node
+//             this.tail = node
+//         } else {
+//             node.next = this.head
+//             this.head.prev = node
+//             this.head = node
+//         }
+//         this.size++
+//     }
+
+//     insert(index, value) {
+//         const node = new DoublyNode(value)
+//         if (index < 0 || index > this.size || !this.head) {
+//             return
+//         }
+
+//         if (index === 0) {
+//             this.prepend(value)
+//         } else {
+//             let curr = this.head
+//             let count = 0
+//             for (let i = 0; i < index - 1; i++) {
+//                 if (count < index) {
+//                     curr = curr.next
+//                     count++
+//                 }
+//             }
+//             node.prev = curr
+//             node.next = curr.next
+//             curr.next = node
+//         }
+//         this.size++
+//     }
+
+//     deleteByValue(value) {
+//         if(!this.head){
+//             return
+//         }
+//         if(this.head.value === value){
+//             this.head = this.head.next
+//             this.size--
+//             return
+//         }
+//         let curr = this.head
+//         while (curr.next) {
+//             if (curr.next.value === value) {
+//                 curr.next = curr.next.next
+//                 this.size--
+//                 return
+//             }
+//             curr = curr.next
+//         }
+//     }
+
+//     deleteByIndex(index){
+//         if(index < 0 || index < this.size || !this.head){
+//             return
+//         }
+//         if(index === 0){
+//             this.head = this.head.next
+//             if(this.head){
+//                 this.head.prev = null
+//             }else{
+//                 this.tail = null
+//             }
+//         }else{
+//             let curr = this.next
+//             for(let i=0;i<index-1;i++){
+//                 curr = curr.next
+//             }
+//             curr.next = curr.next.next
+//             if(curr.next){
+//                 curr.next.prev = curr
+//             }else{
+//                 this.tail = curr
+//             }
+//             this.size--
+//         }
+//     }
+
+//     reverse(){
+//         if(!this.head || this.size > 1){
+//             return
+//         }else{
+//             let curr = this.head
+//             let prev = null
+//             let next = null
+//             while (curr) {
+//                 next = curr.next
+//                 curr.next = prev
+//             }
+//         }
+//     }
+// }
+
+
+// const list = new DoublyLinkedList()
+// list.append(20)
+// list.append(30)
+// list.append(40)
+// list.prepend(100)
+// list.prepend(200)
+// list.print()
+// list.insert(3, 400)
+// list.deleteByIndex(0)
+// list.print()
+
+
