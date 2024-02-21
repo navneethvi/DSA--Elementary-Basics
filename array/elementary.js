@@ -65,8 +65,9 @@
 
 // SecondLargest element
 
+// (1) Brute Force Approch
 
-// let arr = [5, 3, 2, 5, 6, 9, 6, 8, 1]
+let arr = [5, 3, 2, 5, 6, 9, 6, 8, 10]
 // function secondLargest(arr) {
 //     let uniqueArray = Array.from(new Set(arr))
 //     uniqueArray.sort((a, b)=>b-a)
@@ -77,3 +78,20 @@
 //     }
 // }
 
+// (2) Optimised Approch
+
+function secondLargest(arr) {
+    let largest = Number.NEGATIVE_INFINITY
+    let secondLargest = Number.NEGATIVE_INFINITY
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]>largest){
+            secondLargest = largest
+            largest = arr[i]
+        }else if(arr[i]!==largest && arr[i] > secondLargest){
+            secondLargest = arr[i]
+        }
+    }
+    return secondLargest
+}
+
+console.log(secondLargest(arr));
