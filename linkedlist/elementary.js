@@ -486,103 +486,221 @@
 
 // LinkedList with Tail Implementations
 
-class Node {
-    constructor(value){
-        this.value = value
+// class Node {
+//     constructor(value){
+//         this.value = value
+//         this.next = null
+//     }
+// }
+
+// class LinkedList {
+//     constructor(){
+//         this.head = null
+//         this.size = 0
+//         this.tail = null
+//     }
+
+//     getSize(){
+//         return this.size
+//     }
+
+//     print(){
+//         if(this.getSize()===0){
+//             console.log("list is empty");
+//         }else{
+//             let curr = this.head
+//             let listValues = ""
+//             while(curr){
+//                 listValues += `${curr.value} `
+//                 curr = curr.next
+//             }
+//             console.log(listValues);
+//         }
+
+//     }
+
+//     prepend(value){
+//         const node = new Node(value)
+//         if(this.getSize()===0){
+//             this.head = node
+//             this.tail = node
+//         }else{
+//             node.next = this.head
+//             this.head = node
+//         }
+//         this.size++
+//     }
+
+//     append(value){
+//         const node = new Node(value)
+//         if(this.getSize()===0){
+//             this.head = node
+//             this.tail = node
+//         }else{
+//             this.tail.next = node
+//             this.tail = node
+//         }
+//         this.size ++
+//     }
+
+//     removeFromFront(){
+//         if(this.getSize()===0){
+//             return
+//         }else{
+//             this.head = this.head.next
+//             this.size--
+//         }
+//     }
+
+//     removeFromEnd(){
+//         if(this.getSize()===0){
+//             return
+//         }else{
+//             if(this.size===1){
+//                 this.head = null
+//                 this.tail = null
+//             }else{
+//                 let prev = this.head
+//                 while(prev.next !== this.tail){
+//                     prev = prev.next
+//                 }
+//                 prev.next = null
+//             }
+//             this.size--
+//         }
+//     }
+// }
+
+// const list = new LinkedList()
+// list.print()
+// list.prepend(10)
+// console.log(list.getSize());
+// list.prepend(20)
+// list.append(100)
+// list.append(200)
+// console.log(list.getSize());
+// list.print()
+// list.removeFromFront()
+// list.removeFromEnd()
+// list.print()
+
+
+// Doubly LinkedList
+
+class DoublyNode {
+    constructor(value) {
+        this.prev = null
         this.next = null
+        this.value = value
     }
 }
 
-class LinkedList {
-    constructor(){
+class DoublyLinkedList {
+    constructor() {
         this.head = null
-        this.size = 0
         this.tail = null
+        this.size = 0
     }
 
-    getSize(){
-        return this.size
+    append(value) {
+        const node = new DoublyNode(value)
+        if (!this.size) {
+            this.head = node
+            this.tail = node
+        } else {
+            node.prev = this.tail
+            this.tail.next = node
+            this.tail = node
+        }
+        this.size++
     }
 
-    print(){
-        if(this.getSize()===0){
+    print() {
+        if (this.size === 0) {
             console.log("list is empty");
-        }else{
+        } else {
             let curr = this.head
             let listValues = ""
-            while(curr){
+            while (curr) {
                 listValues += `${curr.value} `
                 curr = curr.next
             }
             console.log(listValues);
         }
-        
     }
 
-    prepend(value){
-        const node = new Node(value)
-        if(this.getSize()===0){
+    prepend(value) {
+        const node = new DoublyNode(value)
+        if (!this.size) {
             this.head = node
             this.tail = node
-        }else{
+        } else {
             node.next = this.head
+            this.head.prev = node
             this.head = node
         }
         this.size++
     }
 
-    append(value){
-        const node = new Node(value)
-        if(this.getSize()===0){
-            this.head = node
-            this.tail = node
-        }else{
-            this.tail.next = node
-            this.tail = node
-        }
-        this.size ++
-    }
-
-    removeFromFront(){
-        if(this.getSize()===0){
+    deleteWithValue(value) {
+        if (!this.head) {
             return
-        }else{
-            this.head = this.head.next
-            this.size--
         }
-    }
-
-    removeFromEnd(){
-        if(this.getSize()===0){
+        if (this.head.value === value) {
+            this.head = ths.head.next
             return
-        }else{
-            if(this.size===1){
-                this.head = null
-                this.tail = null
-            }else{
-                let prev = this.head
-                while(prev.next !== this.tail){
-                    prev = prev.next
+        }
+        let curr = this.head
+        while (curr.next) {
+            if (curr.next.value === value) {
+                curr.next = curr.next.next
+                if (curr.next) {
+                    curr.next.prev = curr
                 }
-                prev.next = null
+                if (!curr.next) {
+                    this.tail = curr
+                }
+                return
             }
-            this.size--
+            curr = curr.next
         }
+    }
+
+    insert(index, value) {
+        if (index < 0 || index > this.size || this.size === 0) {
+            return
+        }
+        const node = new DoublyNode(value)
+        if (index === 0) {
+            this.prepend(value)
+        } else if(index===this.size) {
+            this.append(value)
+        }else {
+            let curr = this.head
+            let count = 0
+            while (count < index) {
+                    curr = curr.next
+                    count ++
+                }
+                node.prev = curr.prev
+                node.next = curr
+                curr.prev.next = node
+                curr.prev = node
+                this.size++
+            }
+        
     }
 }
 
-const list = new LinkedList()
-list.print()
-list.prepend(10)
-console.log(list.getSize());
-list.prepend(20)
-list.append(100)
-list.append(200)
-console.log(list.getSize());
-list.print()
-// list.removeFromFront()
-list.removeFromEnd()
+const list = new DoublyLinkedList()
+list.append(10)
+list.append(20)
+list.prepend(5)
+list.prepend(2)
 list.print()
 
+// list.deleteWithValue(10)
+list.insert(2,200)
 
 
+list.print()
