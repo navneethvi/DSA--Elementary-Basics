@@ -25,7 +25,11 @@ function logs(n) {
 // logs(8)
 
 
-function factorial(n){
-    return n<2 ? 1 : n * factorial(n-1)
+function factorial(n) {
+    if (n < 2) {
+        return 1
+    }else{
+        return n * factorial(n-1)
+    }
 }
-// console.log(factorial(10))
+console.log(factorial(5))
