@@ -954,7 +954,52 @@ class LinkedList {
         }
         this.size++
     }
+
+    insertAfter(value, data){
+        if(this.isEmpty()){
+            return
+        }
+        const node = new Node(data)
+        let curr = this.head
+        while(curr){
+            if(curr.value === value){
+                node.next = curr.next
+                curr.next = node
+                this.size++
+                return
+            }
+            curr = curr.next
+        }
+    }
+
+    reverse(){
+        if(this.isEmpty()){
+            return
+        }
+        let prev = null
+        let curr = this.head
+        let next = null
+
+        while(curr!==null){
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.head = prev
+    }
+    
 }
+
+// function arrayToLinkedList(arr){
+//     const list = new LinkedList()
+//     arr.forEach(item=>list.append(item))
+//     return list
+// }
+
+// const arr = [1, 2, 3, 4, 5];
+// const linkedList = arrayToLinkedList(arr);
+// linkedList.print();
 
 const list = new LinkedList()
 list.append(20)
@@ -962,6 +1007,9 @@ list.append(30)
 list.prepend(10)
 list.prepend(5)
 list.print()
-list.sum()
-list.insert(1,100)
+// list.sum()
+// list.insert(1,100)
+list.insertAfter(20, 200)
+list.print()
+list.reverse()
 list.print()
