@@ -979,7 +979,7 @@ class LinkedList {
         let prev = null
         let curr = this.head
         let next = null
-        while(curr!==null){
+        while(curr){
             next = curr.next
             curr.next = prev
             prev = curr

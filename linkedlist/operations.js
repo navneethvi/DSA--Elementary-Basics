@@ -110,15 +110,39 @@ class LinkedList {
         }
         this.head = prev
     }
+
+    removeDuplicates(){
+        if(!this.head){
+            return
+        }
+        let curr = this.head
+        let prev = null
+        const seen = {}
+        while(curr){
+            if(seen[curr.value]){
+                prev.next = curr.next
+                this.size--
+            }else{
+                seen[curr.value] = true
+                prev = curr
+            }
+            curr = curr.next
+        }
+    }
+
+
+    
 }
 
-// const list = new LinkedList()
-// list.append(10)
-// list.append(20)
-// list.append(30)
-// list.prepend(5)
-// list.insert(1, 8)
+const list = new LinkedList()
+list.append(20)
+list.append(20)
+list.append(5)
+list.prepend(5)
+list.insert(1, 8)
 // list.remove(5)
-// list.print()
+list.print()
 // list.reverse()
-// list.print()
+list.removeDuplicates()
+list.print()
+
