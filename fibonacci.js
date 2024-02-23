@@ -5,4 +5,5 @@ function fibonacci(n) {
     }
     return fib
 }
-console.log(fibonacci(10))
+
+
