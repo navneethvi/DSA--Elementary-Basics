@@ -1,4 +1,4 @@
-const arr = [10, 5, 4, 3, 2, 1]
+let arr = [9, 2, 4, 5, 3, 2, 7, 6, 10, 4, 12, 4]
 
 function bubbleSort(arr) {
     let swapped
