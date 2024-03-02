@@ -1,3 +1,5 @@
+let arr = [5, 4, 3, 2, 1, 0]
+
 // function binarySearch(arr, value, left = 0, right = arr.length-1){
 //     if(left>right){
 //         return -1
@@ -49,7 +51,6 @@
 
 // console.log(insertionSort(arr));
 
-let arr = [5, 4, 3, 2, 1, 0]
 
 // function bubbleSort(arr) {
 //     let swapped
