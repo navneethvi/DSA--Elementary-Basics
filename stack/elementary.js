@@ -57,4 +57,4 @@ stack.push(40)
 
 
 // console.log(stack.pop());
-console.log(stack.print());
+// console.log(stack.print());
