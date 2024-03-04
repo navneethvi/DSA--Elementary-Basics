@@ -171,3 +171,64 @@ let arr = [5, 4, 3, 2, 1, 0]
 
 
 // console.log(insertionSort([10,2,33,54,23,65,43,24]));
+
+
+
+
+class Node {
+    constructor(value){
+        this.data = value
+        this.next = null
+    }
+}
+
+class Stack {
+    constructor(){
+        this.top = null
+        this.size = 0
+    }
+
+    push(value){
+        const newNode = new Node(value)
+        if(this.size===0){
+            this.top = newNode
+        }else{
+            newNode.next = this.top
+            this.top = newNode
+        }
+        this.size++
+    }
+
+    pop(){
+        if(this.size === 0){
+            return "Stack Underflow"
+        }else{
+            this.top = this.top.next
+            this.size--
+        }
+    }
+
+    print(){
+        if(this.size === 0){
+            return "Stack Underflow"
+        }else{
+            let curr = this.top
+            let elements = ""
+            while(curr!==null){
+                elements+=curr.data+" "
+                curr=curr.next
+            }
+            return elements
+        }
+    }
+}
+
+const stack = new Stack()
+// console.log(stack.pop());
+stack.push(10)
+stack.push(20)
+stack.push(30)
+console.log(stack.print());
+stack.pop()
+
+console.log(stack.print());
