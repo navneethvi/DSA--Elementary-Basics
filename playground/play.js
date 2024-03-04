@@ -174,51 +174,50 @@ let arr = [5, 4, 3, 2, 1, 0]
 
 
 
-
 class Node {
-    constructor(value){
+    constructor(value) {
         this.data = value
         this.next = null
     }
 }
 
 class Stack {
-    constructor(){
+    constructor() {
         this.top = null
         this.size = 0
     }
 
-    push(value){
+    push(value) {
         const newNode = new Node(value)
-        if(this.size===0){
+        if (this.top === null) {
             this.top = newNode
-        }else{
+        } else {
             newNode.next = this.top
             this.top = newNode
         }
         this.size++
     }
 
-    pop(){
-        if(this.size === 0){
-            return "Stack Underflow"
-        }else{
+    pop() {
+        if (this.top === null) {
+            console.log("Stack is empty");
+        } else {
             this.top = this.top.next
             this.size--
         }
     }
 
-    print(){
-        if(this.size === 0){
-            return "Stack Underflow"
-        }else{
+    print() {
+        if (this.size === 0) {
+            console.log("Stack is Empty");
+        } else {
             let curr = this.top
-            let elements = ""
-            while(curr!==null){
-                elements+=curr.data+" "
-                curr=curr.next
+            let elems = ""
+            while (curr !== null) {
+                elems += curr.data + " "
+                curr = curr.next
             }
-            return elements
+            console.log(elems);
         }
     }
 }
@@ -228,7 +227,7 @@ const stack = new Stack()
 stack.push(10)
 stack.push(20)
 stack.push(30)
-console.log(stack.print());
+// console.log(stack.print());
 stack.pop()
-
-console.log(stack.print());
+stack.print()
+// console.log(stack.print());
