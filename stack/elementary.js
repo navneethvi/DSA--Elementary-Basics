@@ -1,46 +1,60 @@
+class Node {
+    constructor(value) {
+        this.data = value
+        this.next = null
+    }
+}
+
 class Stack {
-    constructor(){
-        this.dataStore = []
-        this.top = 0
+    constructor() {
+        this.top = null
+        this.size = 0
     }
 
-    size(){
-        return this.top
+    push(value) {
+        const newNode = new Node(value)
+        if (this.top === null) {
+            this.top = newNode
+        } else {
+            newNode.next = this.top
+            this.top = newNode
+        }
+        this.size++
     }
 
-    push(value){
-        this.dataStore[this.top++] = value
-    }
-
-    pop(){
-        this.dataStore[this.top--]
-    }
-
-    clear(){
-        this.top = 0
-    }
-
-    peak(){
-        return this.dataStore[this.top-1]
-    }
-
-    print(){
-        for(let i=this.top-1;i>=0;i--){
-            console.log(this.dataStore[i]);
+    pop() {
+        if (this.top === null) {
+            return "Stack Underflow"
+        } else {
+            const poppedData = this.top.data
+            this.top = this.top.next
+            this.size--
+            return poppedData
         }
     }
 
+    print() {
+        if (this.size === 0) {
+            return "Stack Underflow"
+        } else {
+            let curr = this.top
+            let elems = ""
+            while (curr !== null) {
+                elems += curr.data + " "
+                curr = curr.next
+            }
+            return elems
+        }
+    }
 }
 
 const stack = new Stack()
-console.log(stack.size())
+stack.push(10)
 stack.push(20)
-// console.log(stack.size());
 stack.push(30)
 stack.push(40)
-// stack.print()
 // stack.pop()
-// stack.print()
 
-// stack.size()
-console.log(stack.peak());
+
+// console.log(stack.pop());
+console.log(stack.print());
