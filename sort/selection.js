@@ -6,9 +6,7 @@ function selectionSort(arr) {
                 min = j
             }
         }
-        if (min !== i) {
-            [arr[min], arr[i]] = [arr[i], arr[min]]
-        }
+        [arr[i], arr[min]] = [arr[min], arr[i]]
     }
     return arr
 }
