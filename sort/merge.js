@@ -18,7 +18,8 @@ function merge(left, right){
             result.push(right.shift())
         }
     }
-    return result.concat(left, right);}
+    return result.concat(left, right);
+}
 
 const array = [8, 3, 5, 1, 9, 2, 7, 4, 6];
 console.log("Original array:", array);
