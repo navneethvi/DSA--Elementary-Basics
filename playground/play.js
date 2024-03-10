@@ -970,15 +970,42 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 // }
 
 
-function insertionSort(arr){
-    for(let i=1;i<arr.length;i++){
-        let temp = arr[i]
-        let j = i - 1
-        while(arr[j]>temp&&j>=0){
-            arr[j+1] = arr[j]
-            j--
+// function insertionSort(arr){
+//     for(let i=1;i<arr.length;i++){
+//         let temp = arr[i]
+//         let j = i - 1
+//         while(arr[j]>temp&&j>=0){
+//             arr[j+1] = arr[j]
+//             j--
+//         }
+//         arr[j+1] = temp
+//     }
+//     return arr
+// }
+
+
+function partition(arr, start, end) {
+    let pivot = arr[end]
+    let i = start - 1
+    for (let j = start; j < end; j++) {
+        if(arr[j]<pivot){
+            i++
+            swap(arr, i, j)
         }
-        arr[j+1] = temp
+    }
+    swap(arr, i+1, end)
+    return i+1
+}
+
+function swap(arr,i,j){
+    [arr[j], arr[i]] = [arr[i], arr[j]]
+}
+
+function quickSort(arr, start = 0, end = arr.length - 1){
+    if(start<end){
+        let pivotIndex = partition(arr, start, end)
+        quickSort(arr, pivotIndex+1, end)
+        quickSort(arr, start, pivotIndex-1)
     }
     return arr
 }
@@ -986,5 +1013,5 @@ function insertionSort(arr){
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
-// console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
