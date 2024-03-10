@@ -984,34 +984,60 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 // }
 
 
-function partition(arr, start, end) {
-    let pivot = arr[end]
-    let i = start - 1
-    for (let j = start; j < end; j++) {
-        if(arr[j]<pivot){
-            i++
-            swap(arr, i, j)
-        }
-    }
-    swap(arr, i+1, end)
-    return i+1
-}
+// function partition(arr, start, end) {
+//     let pivot = arr[end]
+//     let i = start - 1
+//     for (let j = start; j < end; j++) {
+//         if(arr[j]<pivot){
+//             i++
+//             swap(arr, i, j)
+//         }
+//     }
+//     swap(arr, i+1, end)
+//     return i+1
+// }
 
-function swap(arr,i,j){
-    [arr[j], arr[i]] = [arr[i], arr[j]]
-}
+// function swap(arr,i,j){
+//     [arr[j], arr[i]] = [arr[i], arr[j]]
+// }
 
-function quickSort(arr, start = 0, end = arr.length - 1){
-    if(start<end){
-        let pivotIndex = partition(arr, start, end)
-        quickSort(arr, pivotIndex+1, end)
-        quickSort(arr, start, pivotIndex-1)
-    }
-    return arr
-}
+// function quickSort(arr, start = 0, end = arr.length - 1){
+//     if(start<end){
+//         let pivotIndex = partition(arr, start, end)
+//         quickSort(arr, pivotIndex+1, end)
+//         quickSort(arr, start, pivotIndex-1)
+//     }
+//     return arr
+// }
+
+// function partition(arr, start, end){
+//     let pivot = arr[end]
+//     let i = start - 1
+//     for(let j=start; j<end;j++){
+//         if(arr[j]<pivot){
+//             i++
+//             swap(arr, i, j)
+//         }
+//     }
+//     swap(arr, i+1, end)
+//     return i+1
+// }
+
+// function swap(arr,i,j){
+//     [arr[i],arr[j]] = [arr[j],arr[i]]
+// }
+
+// function quickSort(arr,start=0,end=arr.length-1){
+//     if(start<end){
+//         const pivotIndex = partition(arr,start,end)
+//         quickSort(arr, pivotIndex+1, end)
+//         quickSort(arr, start, pivotIndex-1)
+//     }
+//     return arr
+// }
 
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
-console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+// console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
