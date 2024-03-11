@@ -458,6 +458,110 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 // queue.deque()
 // queue.print()
 
+
+
+// class Node {
+//     constructor(value) {
+//         this.data = value
+//         this.next = null
+//     }
+// }
+
+// class Queue {
+//     constructor() {
+//         this.front = null
+//         this.rear = null
+//         this.size = 0
+//     }
+
+//     enque(value) {
+//         const newNode = new Node(value)
+//         if (this.front === null) {
+//             this.front = newNode
+//             this.rear = newNode
+//         } else {
+//             this.rear.next = newNode
+//             this.rear = newNode
+//         }
+//         this.size++
+//     }
+
+//     deque() {
+//         if (this.front === null) {
+//             return
+//         } else {
+//             this.front = this.front.next
+//             this.size--
+//         }
+//     }
+
+//     print() {
+//         if (this.front === null) {
+//             console.log("Queue is empty");
+//         } else {
+//             let curr = this.front
+//             let elems = ""
+//             while (curr) {
+//                 elems += curr.data + " "
+//                 curr = curr.next
+//             }
+//             console.log(elems);
+//         }
+//     }
+// }
+
+// const queue = new Queue()
+// queue.enque(10)
+// queue.enque(20)
+// queue.enque(30) 
+// queue.print()
+// queue.deque()
+// queue.print()
+
+
+
+class HashTable {
+    constructor(){
+        this.table = new Array(size)
+        this.size = size
+    }
+
+    _hash(key){
+        let total = 0
+        for(let i=0;i<key.length;i++){
+            total+=key.charCodeAt(i)
+        }
+        return total%this.size
+    }
+
+    set(key, value){
+        const index = this._hash(key)
+        this.table[index] = value
+    }
+
+    get(key){
+        const index = this._hash(key)
+        return this.table[index]
+    }
+
+    remove(key){
+        const index = this._hash(key)
+        this.table[index] = undefined
+    }
+
+    print(){
+        for(let i=0;i<this.table.length;i++){
+            if(this.table[i]){
+                console.log(i,this.table[i]);
+            }
+        }
+    }
+}
+
+const HashTable = new HashTable()
+HashTable.set()
+
+
 // function bubbleSort(arr) {
 //     let swapped
 //     do {
@@ -700,7 +804,7 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 //         let temp = arr[i]
 //         let j = i - 1
 //         while(j>=0&&arr[j]>temp){
-//             arr[j+1] = arr[j] 
+//             arr[j+1] = arr[j]
 //             j--
 //         }
 //         arr[j+1] = temp
