@@ -116,15 +116,15 @@
 
 // Pure Rotating an array by swapping elements
 
-function rotateArrayPure(arr, k){
-    k = k % arr.length
-    for(let i=0;i<k;i++){
-        let temp = arr[i]
-        for(let j=1;j<arr.length;j++){
-            arr[j-1] = arr[j]
-        }
-        arr[arr.length-1] = temp
-    }
-    return arr
-}
+// function rotateArrayPure(arr, k){
+//     k = k % arr.length
+//     for(let i=0;i<k;i++){
+//         let temp = arr[i]
+//         for(let j=1;j<arr.length;j++){
+//             arr[j-1] = arr[j]
+//         }
+//         arr[arr.length-1] = temp
+//     }
+//     return arr
+// }
 
