@@ -556,6 +556,39 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 // console.log(ht.get("student"));
 
 
+// class HashTable {
+//     constructor(size = 50){
+//         this.table = new Array(size)
+//         this.size = size
+//     }
+
+//     _hash(key){
+//         let total = 0
+//         for(let i=0;i<arr.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+
+//     set(key, value){
+//         let index = this._hash(key)
+//         this.table[index] = value
+//     }
+
+//     get(key){
+//         let index = this._hash(key)
+//         return this.table[index]
+//     }
+
+//     remove(key){
+//         let index = this._hash(key)
+//         this.table[index] = undefined
+//     }
+// }
+
+// const ht = new HashTable()
+// ht.set("name", "navaneeth")
+// ht.set("age", "21")
 
 
 
@@ -1137,8 +1170,36 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 //     return arr
 // }
 
+
+function partition(arr, start, end) {
+    let pivot = arr[end]
+    let i = start - 1
+    for (let j = start; j < end; j++) {
+        if (arr[j] < pivot) {
+            i++
+            swap(arr, i, j)
+        }
+    }
+    swap(arr, i + 1, end)
+    return i + 1
+}
+
+function swap(arr, i, j){
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+}
+
+function quickSort(arr, start = 0, end = arr.length - 1) {
+    if (start < end) {
+        let pivotIndex = partition(arr, start, end)
+        quickSort(arr, pivotIndex + 1, end)
+        quickSort(arr, start, pivotIndex - 1)
+    }
+    return arr
+}
+
+
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
-// console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
