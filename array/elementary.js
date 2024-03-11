@@ -96,3 +96,21 @@
 
 
 
+// Swapping elements in an array
+
+// function swap(arr, index1, index2) {
+//     [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
+// }
+
+
+// Rotating an array by swapping elements
+
+// function rotateArray(arr, k) {
+//     k = k % arr.length
+//     for(i=0;i<k;i++){
+//         let back = arr.pop()
+//         arr.unshift(back)
+//     }
+//     return arr
+// }
+
