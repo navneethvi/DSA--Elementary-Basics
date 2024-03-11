@@ -1,21 +1,21 @@
-const { removeAllListeners } = require("nodemon")
+// const { removeAllListeners } = require("nodemon")
 
-let arr = [5, 4, 3, 2, 1, 0]
+// let arr = [5, 4, 3, 2, 1, 0]
 
-function binarySearch(arr, value, left = 0, right = arr.length - 1) {
-    if (left > right) {
-        return -1
-    }
-    let mid = Math.floor((left + right) / 2)
+// function binarySearch(arr, value, left = 0, right = arr.length - 1) {
+//     if (left > right) {
+//         return -1
+//     }
+//     let mid = Math.floor((left + right) / 2)
 
-    if (arr[mid] === value) {
-        return mid
-    } else if (arr[mid] < value) {
-        return binarySearch(arr, value, left + 1, right)
-    } else {
-        return binarySearch(arr, value, left, right - 1)
-    }
-}
+//     if (arr[mid] === value) {
+//         return mid
+//     } else if (arr[mid] < value) {
+//         return binarySearch(arr, value, left + 1, right)
+//     } else {
+//         return binarySearch(arr, value, left, right - 1)
+//     }
+// }
 
 // console.log(binarySearch([1,2,3,4,5,6]));
 
@@ -1201,5 +1201,5 @@ function binarySearch(arr, value, left = 0, right = arr.length - 1) {
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
-console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+// console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
