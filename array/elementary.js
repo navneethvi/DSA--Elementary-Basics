@@ -172,4 +172,25 @@
 // console.log(reverseArrayWhile([1,2,3,4,5]));
 
 
+// Third Largest
+
+
+// function thirdLargest(arr){
+//     let largest = -1
+//     let second = -1
+//     let third = -1
+//     for(let i=0;i<arr.length;i++){
+//         if(arr[i]>largest){
+//             third = second
+//             second = largest
+//             largest = arr[i]
+//         }else if(arr[i]>second&&arr[i]!==largest){
+//             third = second
+//             second = arr[i]
+//         }else if(arr[i]>third&&arr[i]!==second&&arr[i]!==largest){
+//             third = arr[i]
+//         }
+//     }
+//     return third
+// }
 
