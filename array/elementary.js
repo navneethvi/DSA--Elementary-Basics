@@ -116,10 +116,10 @@
 
 // Pure Rotating an array by swapping elements
 
-// function rotateArrayPure(arr, k){
+// function rotateArrayPure(arr, k) {
 //     k = k % arr.length
 //     for(let i=0;i<k;i++){
-//         let temp = arr[i]
+//         let temp = arr[0]
 //         for(let j=1;j<arr.length;j++){
 //             arr[j-1] = arr[j]
 //         }
@@ -128,3 +128,16 @@
 //     return arr
 // }
 
+
+// console.log(rotateArrayPure([1,2,3,4,5], 2));
+
+
+// Swap array
+
+// function swapArray(arr, i, j){
+//     [arr[i], arr[j]] = [arr[j], arr[i]]
+//     return arr
+// }
+
+
+// console.log(swapArray([1,2,3,4,5], 0, 2));
