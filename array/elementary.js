@@ -141,3 +141,32 @@
 
 
 // console.log(swapArray([1,2,3,4,5], 0, 2));
+
+// Reverse array 
+
+// function reverseArray(arr){
+//     let len = arr.length
+//     for(let i=0;i<Math.floor(len/2);i++){
+//         let temp = arr[i]
+//         arr[i] = arr[len-1-i]
+//         arr[len-1-i] = temp        
+//     }
+//     return arr
+// }
+
+// console.log(reverseArray([1,2,3,4,5]));
+
+// function reverseArrayWhile(arr){
+//     let start = 0
+//     let end = arr.length - 1
+//     while(start<end){
+//         let temp = arr[start]
+//         arr[start] = arr[end]
+//         arr[end] =  temp
+//         start++
+//         end--
+//     }
+//     return arr
+// }
+
+// console.log(reverseArrayWhile([1,2,3,4,5]));
