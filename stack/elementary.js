@@ -33,6 +33,15 @@ class Stack {
         }
     }
 
+    pushFormat(arr){
+        for(let i=0;i<Math.ceil(arr.length/2);i++){
+            this.push(arr[i])
+            if(arr.length-1-i!==i){
+                this.push(arr[arr.length-1-i])
+            }
+        }
+    }
+
     print() {
         if (this.size === 0) {
             return "Stack Underflow"
@@ -49,12 +58,12 @@ class Stack {
 }
 
 const stack = new Stack()
-stack.push(10)
-stack.push(20)
-stack.push(30)
-stack.push(40)
+// stack.push(10)
+// stack.push(20)
+// stack.push(30)
+// stack.push(40)
 // stack.pop()
-
+stack.pushFormat([1,2,3,4,5])
 
 // console.log(stack.pop());
-// console.log(stack.print());
+console.log(stack.print());
