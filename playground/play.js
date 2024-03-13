@@ -922,69 +922,237 @@
 // stack.middle()
 
 
-class HashTable {
-    constructor(size) {
-        this.table = new Array(size)
-        this.size = size
-    }
+// class HashTable {
+//     constructor(size) {
+//         this.table = new Array(size)
+//         this.size = size
+//     }
 
-    _hash(key) {
-        let total = 0
-        for (let i = 0; i < key.length; i++) {
-            total += key.charCodeAt(i)
-        }
-        return total % this.size
-    }
+//     _hash(key) {
+//         let total = 0
+//         for (let i = 0; i < key.length; i++) {
+//             total += key.charCodeAt(i)
+//         }
+//         return total % this.size
+//     }
 
-    set(key, value) {
-        const index = this._hash(key)
-        const bucket = this.table[index]
-        for(let i=0;i<bucket.length;i++){
-            if(bucket[i][0]===key){
-                bucket[i][1] = value
-                return
-            }
-        }
-        bucket.push([key, value])
-    }
+//     set(key, value) {
+//         const index = this._hash(key)
+//         const bucket = this.table[index]
+//         for(let i=0;i<bucket.length;i++){
+//             if(bucket[i][0]===key){
+//                 bucket[i][1] = value
+//                 return
+//             }
+//         }
+//         bucket.push([key, value])
+//     }
 
-    get(key) {
-        const index = this._hash(key)
-        const bucket = this.table[index]
-        for(let i=0;i<bucket.length;i++){
-            if(bucket[i][0]===key){
-                return bucket[i][1]
-            }
-        }
-        return undefined
-    }
+//     get(key) {
+//         const index = this._hash(key)
+//         const bucket = this.table[index]
+//         for(let i=0;i<bucket.length;i++){
+//             if(bucket[i][0]===key){
+//                 return bucket[i][1]
+//             }
+//         }
+//         return undefined
+//     }
 
-    remove(key) {
-        let index = this._hash(key)
-        const bucket = this.table[index]
-        for(let i=0;i<bucket.length;i++){
-            if(bucket[i][0]===key){
-                bucket.splice(i,1)
-                return
-            }
-        }
-    }
+//     remove(key) {
+//         let index = this._hash(key)
+//         const bucket = this.table[index]
+//         for(let i=0;i<bucket.length;i++){
+//             if(bucket[i][0]===key){
+//                 bucket.splice(i,1)
+//                 return
+//             }
+//         }
+//     }
 
-    print() {
-        for (let i = 0; i < this.table.length; i++) {
-            if (this.table[i]) {
-                console.log(i, this.table[i]);
-            }
-        }
-    }
-}
+//     print() {
+//         for (let i = 0; i < this.table.length; i++) {
+//             if (this.table[i]) {
+//                 console.log(i, this.table[i]);
+//             }
+//         }
+//     }
+// }
 
-const ht = new HashTable(50)
-ht.set("name", "Navaneeth")
-ht.set("age", 21)
-ht.set("batch", "BCE159")
+// const ht = new HashTable(50)
+// ht.set("name", "Navaneeth")
+// ht.set("age", 21)
+// ht.set("batch", "BCE159")
 // ht.get("batch")
-ht.print()
+// ht.print()
+
+
+
+// class HashTable {
+//     constructor(size){
+//         this.table = new Array(size)
+//         this.size = size
+//     }
+
+//     hash(key){
+//         let total = 0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+
+//     set(key, value){
+//         const index = this.hash(key)
+//         const bucket = this.table[index]
+//         if(!bucket){
+//             this.table[index] = [[key, value]]
+//         }else{
+//             const sameKeyItem = bucket.find(item=>item[0]===key)
+//             if(sameKeyItem){
+//                 sameKeyItem[1] = value
+//             }else{
+//                 bucket.push([key, value])
+//             }
+//         }
+//     }
+
+//     get(key){
+//         const index = this.hash(key)
+//         const bucket = this.table[index]
+//         if(bucket){
+//             const sameKeyItem = bucket.find(item=>item[0]===key)
+//             if(sameKeyItem){
+//                 return sameKeyItem[1]
+//             }
+//         }
+//         return undefined
+//     }
+
+//     remove(key){
+//         const index = this.hash(key)
+//         const bucket = this.table[index]
+//         if(bucket){
+//             const sameKeyItem = bucket.find(item=>item[0]===key)
+//             if(sameKeyItem){
+//                 bucket.splice(bucket.indexOf(sameKeyItem), 1)
+//             }
+//         }
+//     }
+
+//     print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i, this.table[i])
+//             }
+//         }
+//     }
+// }
+
+
+// const ht = new HashTable(30)
+// ht.set("name", "navaneeth")
+// ht.set("age", "21")
+// ht.set("mane", "unni")
+// ht.print()
+// console.log(ht.get("mane"));
+// ht.remove("mane")
+// ht.print()
+
+
+// class Node {
+//     constructor(value){
+//         this.data = value
+//         this.next = null
+//     }
+// }
+
+// class Queue {
+//     constructor(){
+//         this.rear = null
+//         this.front = null
+//         this.size = 0
+//     }
+
+//     enque(value){
+//         const newNode = new Node(value)
+//         if(this.front===null){
+//             this.rear = newNode
+//             this.front = newNode
+//         }else{
+//             this.rear.next = newNode
+//             this.rear = newNode
+//         }
+//         this.size++
+//     }
+
+//     deque(){
+//         if(this.front===null){
+//             return
+//         }else{
+//             this.front = this.front.next
+//             this.size--
+//         }
+//     }
+
+//     maximum(){
+//         if(this.front===null||this.front.next===null){
+//             return
+//         }
+//         let curr = this.front
+//         let max = this.front.data
+//         while(curr){
+//             if(curr.data>max){
+//                 max = curr.data
+//             }
+//             curr = curr.next
+//         }
+//         console.log(max);
+//     }
+
+//     reverse(){
+
+//     }
+
+//     middle(){
+//         if(this.front===null||this.front.next===null){
+//             return
+//         }
+//         let slow = this.front
+//         let fast = this.front
+//         while(fast&&fast.next){
+//             slow = slow.next
+//             fast = fast.next.next
+//         }
+//         console.log(slow.data);
+//     }
+
+//     print(){
+//         if(this.front===null){
+//             return
+//         }else{
+//             let curr = this.front
+//             let elems = ""
+//             while(curr){
+//                 elems+= curr.data+ " "
+//                 curr = curr.next
+//             }
+//             console.log(elems);
+//         }
+//     }
+// }
+
+// const q = new Queue()
+// q.enque(10)
+// q.enque(20)
+// q.enque(99)
+// q.enque(100)
+// q.enque(30)
+// q.print()
+// // q.deque()
+// q.print()
+// q.middle()
+// q.maximum()
 
 // class Node {
 //     constructor(value){
@@ -1713,6 +1881,51 @@ ht.print()
 //     }
 //     return arr
 // }
+
+
+// function bubbleSort(arr){
+//     let swapped
+//     do {
+//         swapped = false
+//         for(i=0;i<arr.length;i++){
+//             if(arr[i]>arr[i+1]){
+//                 [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
+//                 swapped = true
+//             }
+//         }
+//     } while (swapped);
+//     return arr
+// }
+
+
+// function insertionSort(arr){
+//     for(let i=0;i<arr.length;i++){
+//         let temp = arr[i]
+//         let j = i - 1
+//         while(j>=0&&arr[j]>temp){
+//             arr[j+1] = arr[j]
+//             j--
+//         }
+//         arr[j+1] = temp
+//     }
+//     return arr
+// }
+
+// function selectionSort(arr){
+//     for(let i=0;i<arr.length-1;i++){
+//         let min = i
+//         for(let j=i+1;j<arr.length;j++){
+//             if(arr[j]<arr[min]){
+//                 min = j
+//             }
+//         }
+//         [arr[min], arr[i]] = [arr[i], arr[min]]
+//     }
+//     return arr
+// }
+
+
+
 
 
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
