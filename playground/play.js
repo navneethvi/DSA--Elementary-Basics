@@ -783,143 +783,331 @@
 // stack.print()
 
 
-class Node {
-    constructor(value) {
-        this.data = value
-        this.next = null
-    }
-}
+// class Node {
+//     constructor(value) {
+//         this.data = value
+//         this.next = null
+//     }
+// }
 
-class Stack {
-    constructor() {
-        this.top = null
-        this.size = 0
+// class Stack {
+//     constructor() {
+//         this.top = null
+//         this.size = 0
+//     }
+
+//     push(value) {
+//         const newNode = new Node(value)
+//         if (this.top === null) {
+//             this.top = newNode
+//         } else {
+//             newNode.next = this.top
+//             this.top = newNode
+//         }
+//         this.size++
+//     }
+
+//     pop() {
+//         if (this.top === null) {
+//             console.log("Stack is empty");
+//         } else {
+//             this.top = this.top.next
+//             this.size--
+//         }
+//     }
+
+//     peek() {
+//         if (this.top === null) {
+//             return
+//         } else {
+//             console.log(this.top.data);
+//         }
+//     }
+
+//     reverse() {
+//         if (this.top === null || this.top.next === null) {
+//             return
+//         }
+//         let prev = this.top
+//         let curr = this.top.next
+//         while (curr) {
+//             const next = curr.next
+//             curr.next = prev
+//             prev = curr
+//             curr = next
+//         }
+//         this.top.next = null
+//         this.top = prev
+//     }
+
+//     minimum() {
+//         if (this.top === null) {
+//             console.log("Stack empty");
+//         } else {
+//             let curr = this.top.next
+//             let min = this.top.data
+//             while (curr) {
+//                 if (curr.data < min) {
+//                     min = curr.data
+//                 }
+//                 curr = curr.next
+//             }
+//             console.log(min);
+//         }
+//     }
+
+//     maximum() {
+//         if (this.top === null) {
+//             console.log("Stack is empty");
+//         } else {
+//             let curr = this.top
+//             let max = this.top.data
+//             while(curr){
+//                 if(curr.data> max){
+//                     max = curr.data
+//                 }
+//                 curr = curr.next
+//             }
+//             console.log(max);
+//         }
+//     }
+
+//     middle() {
+//         if (this.top === null || this.top.next === null) {
+//             return
+//         }
+
+//         let slow = this.top
+//         let fast = this.top
+//         while (fast && fast.next) {
+//             slow = slow.next
+//             fast = fast.next.next
+//         }
+//         console.log(slow.data);
+//     }
+
+//     pushArray(arr) {
+//         for (let i = 0; i < Math.ceil(arr.length / 2); i++) {
+//             this.push(arr[i])
+//             if (arr.length - 1 - i !== i) {
+//                 this.push(arr[arr.length - 1 - i])
+//             }
+//         }
+//     }
+
+//     print() {
+//         if (this.top === null) {
+//             return
+//         } else {
+//             let curr = this.top
+//             let elems = ""
+//             while (curr) {
+//                 elems += curr.data + " "
+//                 curr = curr.next
+//             }
+//             console.log(elems);
+//         }
+//     }
+// }
+
+
+// const stack = new Stack()
+// stack.pushArray([10, 30, 50, 70, 60, 40, 20])
+// stack.print()
+// stack.maximum()
+// stack.minimum()
+// stack.reverse()
+// stack.print()
+// stack.peek()
+// stack.middle()
+
+
+class HashTable {
+    constructor(size) {
+        this.table = new Array(size)
+        this.size = size
     }
 
-    push(value) {
-        const newNode = new Node(value)
-        if (this.top === null) {
-            this.top = newNode
-        } else {
-            newNode.next = this.top
-            this.top = newNode
+    _hash(key) {
+        let total = 0
+        for (let i = 0; i < key.length; i++) {
+            total += key.charCodeAt(i)
         }
-        this.size++
+        return total % this.size
     }
 
-    pop() {
-        if (this.top === null) {
-            console.log("Stack is empty");
-        } else {
-            this.top = this.top.next
-            this.size--
-        }
-    }
-
-    peek() {
-        if (this.top === null) {
-            return
-        } else {
-            console.log(this.top.data);
-        }
-    }
-
-    reverse() {
-        if (this.top === null || this.top.next === null) {
-            return
-        }
-        let prev = this.top
-        let curr = this.top.next
-        while (curr) {
-            const next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next
-        }
-        this.top.next = null
-        this.top = prev
-    }
-
-    minimum() {
-        if (this.top === null) {
-            console.log("Stack empty");
-        } else {
-            let curr = this.top.next
-            let min = this.top.data
-            while (curr) {
-                if (curr.data < min) {
-                    min = curr.data
-                }
-                curr = curr.next
+    set(key, value) {
+        const index = this._hash(key)
+        const bucket = this.table[index]
+        for(let i=0;i<bucket.length;i++){
+            if(bucket[i][0]===key){
+                bucket[i][1] = value
+                return
             }
-            console.log(min);
         }
+        bucket.push([key, value])
     }
 
-    maximum() {
-        if (this.top === null) {
-            console.log("Stack is empty");
-        } else {
-            let curr = this.top
-            let max = this.top.data
-            while(curr){
-                if(curr.data> max){
-                    max = curr.data
-                }
-                curr = curr.next
+    get(key) {
+        const index = this._hash(key)
+        const bucket = this.table[index]
+        for(let i=0;i<bucket.length;i++){
+            if(bucket[i][0]===key){
+                return bucket[i][1]
             }
-            console.log(max);
         }
+        return undefined
     }
 
-    middle() {
-        if (this.top === null || this.top.next === null) {
-            return
-        }
-
-        let slow = this.top
-        let fast = this.top
-        while (fast && fast.next) {
-            slow = slow.next
-            fast = fast.next.next
-        }
-        console.log(slow.data);
-    }
-
-    pushArray(arr) {
-        for (let i = 0; i < Math.ceil(arr.length / 2); i++) {
-            this.push(arr[i])
-            if (arr.length - 1 - i !== i) {
-                this.push(arr[arr.length - 1 - i])
+    remove(key) {
+        let index = this._hash(key)
+        const bucket = this.table[index]
+        for(let i=0;i<bucket.length;i++){
+            if(bucket[i][0]===key){
+                bucket.splice(i,1)
+                return
             }
         }
     }
 
     print() {
-        if (this.top === null) {
-            return
-        } else {
-            let curr = this.top
-            let elems = ""
-            while (curr) {
-                elems += curr.data + " "
-                curr = curr.next
+        for (let i = 0; i < this.table.length; i++) {
+            if (this.table[i]) {
+                console.log(i, this.table[i]);
             }
-            console.log(elems);
         }
     }
 }
 
+const ht = new HashTable(50)
+ht.set("name", "Navaneeth")
+ht.set("age", 21)
+ht.set("batch", "BCE159")
+// ht.get("batch")
+ht.print()
 
-const stack = new Stack()
-stack.pushArray([10, 30, 50, 70, 60, 40, 20])
-stack.print()
-stack.maximum()
-stack.minimum()
-// stack.reverse()
-// stack.print()
-// stack.peek()
-// stack.middle()
+// class Node {
+//     constructor(value){
+//         this.data = value
+//         this.next = null
+//     }
+// }
+
+// class Queue {
+//     constructor(){
+//         this.size = 0
+//         this.front = null
+//         this.rear = null
+//     }
+
+//     enque(value){
+//         const newNode = new Node(value)
+//         if(this.front === null){
+//             this.front = newNode
+//             this.rear = newNode
+//         }else{
+//             this.rear.next = newNode
+//             this.rear = newNode
+//         }
+//         this.size++
+//     }
+
+//     reverse(){
+//         if(this.front === null || this.front.next === null){
+//             return
+//         }
+//         let curr = this.front.next
+//         let prev = this.front
+//         while(curr){
+//             let next = curr.next
+//             curr.next = prev
+//             prev = curr
+//             curr = next
+//         }
+//         curr.next = prev
+//         this.rear = this.front
+//         this.front = curr
+//     }
+
+//     deque(){
+//         if(this.front === null){
+//             console.log("Queue empty");
+//         }else{
+//             this.front = this.front.next
+//             this.size--
+//         }
+//     }
+
+//     maximum(){
+//         if(this.front === null){
+//             return
+//         }
+//         let curr = this.front
+//         let max = this.front.data
+//         while(curr){
+//             if(curr.data>max){
+//                 max = curr.data
+//             }
+//             curr = curr.next
+//         }
+//         console.log(max);
+//     }
+
+//     minimum(){
+//         if(this.front===null){
+//             return
+//         }
+//         let min = this.front.data
+//         let curr = this.front
+//         while(curr){
+//             if(curr.data<min){
+//                 min = curr.data
+//             }
+//             curr = curr.next
+//         }
+//         console.log(min);
+//     }
+
+//     middle(){
+//         if(this.front === null || this.front.next === null){
+//             return
+//         }
+//         let slow = this.front
+//         let fast = this.front
+//         while(fast&&fast.next){
+//             slow = slow.next
+//             fast = fast.next.next
+//         }
+//         console.log(slow.data);
+//     }
+
+//     print(){
+//         if(this.front===null){
+//             console.log("Queue empty");
+//         }else{
+//             let elems = ""
+//             let curr = this.front
+//             while(curr){
+//                 elems += curr.data+ " "
+//                 curr = curr.next
+//             }
+//             console.log(elems);
+//         }
+//     }
+// }
+
+// const queue = new Queue()
+// queue.enque(10)
+// queue.enque(20)
+// queue.enque(5)
+// queue.enque(30)
+// queue.enque(40)
+// queue.print()
+// queue.deque()
+// queue.print()
+// queue.maximum()
+// queue.minimum()
+// queue.middle()
 
 // function bubbleSort(arr) {
 //     let swapped
