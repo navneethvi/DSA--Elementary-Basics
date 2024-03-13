@@ -713,6 +713,76 @@
 // ht.set("age", "21")
 
 
+// class Node {
+//     constructor(value) {
+//         this.data = value
+//         this.next = null
+//     }
+// }
+
+// class Stack {
+//     constructor() {
+//         this.top = null
+//         this.size = 0
+//     }
+
+//     push(value) {
+//         const newNode = new Node(value)
+//         if (this.top === null) {
+//             this.top = newNode
+//         } else {
+//             newNode.next = this.top
+//             this.top = newNode
+//         }
+//         this.size++
+//     }
+
+//     pushArrayLike(arr){
+//         for(let i=0;i<Math.ceil(arr.length/2);i++){
+//             this.push(arr[i])
+//             if(arr.length-1-i !== i){
+//                 this.push(arr[arr.length-1-i])
+//             }
+//         }
+//     }
+
+//     pushReversedString(str){
+//         for(let i=str.length-1;i>=0;i--){
+//             this.push(str[i])
+//         }
+//     }
+
+//     pop() {
+//         if (this.top === null) {
+//             console.log("Stack empty");
+//         } else {
+//             this.top = this.top.next
+//             this.size--
+//         }
+//     }
+
+//     print() {
+//         if (this.top === null) {
+//             console.log("Stack empty");
+//         } else {
+//             let curr = this.top
+//             let elems = ""
+//             while (curr) {
+//                 elems += curr.data + " "
+//                 curr = curr.next
+//             }
+//             console.log(elems);
+//         }
+//     }
+// }
+
+
+// const stack = new Stack()
+// // stack.pushArrayLike([1, 2, 3, 4, 5])
+// stack.pushReversedString("hello")
+// stack.print()
+
+
 class Node {
     constructor(value) {
         this.data = value
@@ -737,33 +807,97 @@ class Stack {
         this.size++
     }
 
-    pushArrayLike(arr){
-        for(let i=0;i<Math.ceil(arr.length/2);i++){
-            this.push(arr[i])
-            if(arr.length-1-i !== i){
-                this.push(arr[arr.length-1-i])
-            }
-        }
-    }
-
-    pushReversedString(str){
-        for(let i=str.length-1;i>=0;i--){
-            this.push(str[i])
-        }
-    }
-
     pop() {
         if (this.top === null) {
-            console.log("Stack empty");
+            console.log("Stack is empty");
         } else {
             this.top = this.top.next
             this.size--
         }
     }
 
-    print() {
+    peek() {
+        if (this.top === null) {
+            return
+        } else {
+            console.log(this.top.data);
+        }
+    }
+
+    reverse() {
+        if (this.top === null || this.top.next === null) {
+            return
+        }
+        let prev = this.top
+        let curr = this.top.next
+        while (curr) {
+            const next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.top.next = null
+        this.top = prev
+    }
+
+    minimum() {
         if (this.top === null) {
             console.log("Stack empty");
+        } else {
+            let curr = this.top.next
+            let min = this.top.data
+            while (curr) {
+                if (curr.data < min) {
+                    min = curr.data
+                }
+                curr = curr.next
+            }
+            console.log(min);
+        }
+    }
+
+    maximum() {
+        if (this.top === null) {
+            console.log("Stack is empty");
+        } else {
+            let curr = this.top
+            let max = this.top.data
+            while(curr){
+                if(curr.data> max){
+                    max = curr.data
+                }
+                curr = curr.next
+            }
+            console.log(max);
+        }
+    }
+
+    middle() {
+        if (this.top === null || this.top.next === null) {
+            return
+        }
+
+        let slow = this.top
+        let fast = this.top
+        while (fast && fast.next) {
+            slow = slow.next
+            fast = fast.next.next
+        }
+        console.log(slow.data);
+    }
+
+    pushArray(arr) {
+        for (let i = 0; i < Math.ceil(arr.length / 2); i++) {
+            this.push(arr[i])
+            if (arr.length - 1 - i !== i) {
+                this.push(arr[arr.length - 1 - i])
+            }
+        }
+    }
+
+    print() {
+        if (this.top === null) {
+            return
         } else {
             let curr = this.top
             let elems = ""
@@ -778,9 +912,14 @@ class Stack {
 
 
 const stack = new Stack()
-// stack.pushArrayLike([1, 2, 3, 4, 5])
-stack.pushReversedString("hello")
+stack.pushArray([10, 30, 50, 70, 60, 40, 20])
 stack.print()
+stack.maximum()
+stack.minimum()
+// stack.reverse()
+// stack.print()
+// stack.peek()
+// stack.middle()
 
 // function bubbleSort(arr) {
 //     let swapped
