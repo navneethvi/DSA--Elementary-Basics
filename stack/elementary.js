@@ -57,13 +57,3 @@ class Stack {
     }
 }
 
-const stack = new Stack()
-// stack.push(10)
-// stack.push(20)
-// stack.push(30)
-// stack.push(40)
-// stack.pop()
-stack.pushFormat([1,2,3,4,5])
-
-// console.log(stack.pop());
-console.log(stack.print());
