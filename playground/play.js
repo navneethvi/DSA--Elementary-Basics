@@ -1279,6 +1279,74 @@
 
 
 
+// class Node {
+//     constructor(value){
+//         this.data = value
+//         this.next = null
+//     }
+// }
+
+// class Stack {
+//     constructor(){
+//         this.top = null
+//         this.size = 0
+//     }
+
+//     push(value){
+//         const newNode = new Node(value)
+//         if(this.top === null){
+//             this.top = newNode
+//         }else {
+//             newNode.next = this.top
+//             this.top = newNode
+//         }
+//         this.size++
+//     }
+
+   
+//     pushString(str){
+//         for(let i=0;i<str.length;i++){
+//             this.push(str[i])
+//         }
+//     }
+
+//     reverse(){
+//         if(this.top ===null|| this.top.next ===null){
+//             return
+//         }
+
+//         let prev = this.top
+//         let curr = this.top.next
+//         while(curr){
+//             let next = curr.next
+//             curr.next = prev
+//             prev = curr
+//             curr = next
+//         }
+//         this.top.next = null
+//         this.top = prev
+//     }
+
+//     print(){
+//         if(this.top === null){
+//             return
+//         }else{
+//             let curr = this.top
+//             let elems = ""
+//             while(curr){
+//                 elems+=curr.data+ " "
+//                 curr = curr.next
+//             }
+//             console.log(elems);
+//         }
+//     }
+// }
+
+// const stack = new Stack()
+// stack.pushString("apple")
+// stack.reverse()
+// stack.print()
+
 // function linearSearch(arr, data, index=0){
 //     if(index>=arr.length){
 //         return
@@ -1985,6 +2053,26 @@
 //         quickSort(arr, start, pivotIndex-1)
 //     }
 //     return arr
+// }
+
+
+// function merge(arr){
+//     if(arr.length<=1){
+//         return
+//     }
+//     let mid = Math.floor(arr.length/2)
+//     let left = arr.slice(0,mid)
+//     let right = arr.slice(mid)
+    
+// }
+
+// function mergeInPlace(arr, left, right){
+//     let i = 0
+//     let j = 0
+//     let k = 0
+//     while(j<left.length && k<left.length){
+
+//     }
 // }
 
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
