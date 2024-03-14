@@ -130,6 +130,27 @@ class Stack {
        } while (swapped);
     }
 
+
+    stackToQueue(){
+        let temp = this.top
+        this.rear = null
+        this.front = null
+        while(temp){
+            let newNode = {
+                data : temp.data,
+                next : null
+            }
+            if(this.front===null){
+                this.rear = newNode
+                this.front = newNode
+            }else{
+                newNode.next = this.front
+                this.front = newNode
+            }
+            temp = temp.next
+        }   
+    }
+
     print() {
         if (this.size === 0) {
             return "Stack Underflow"
