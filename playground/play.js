@@ -1277,6 +1277,40 @@
 // queue.minimum()
 // queue.middle()
 
+
+
+// function linearSearch(arr, data, index=0){
+//     if(index>=arr.length){
+//         return
+//     }
+//     if(arr[index]===data){
+//         return index
+//     }
+//     return linearSearch(arr, data, index+1)
+// }
+
+
+// console.log(linearSearch([1,2,3,4,5], 1));
+
+
+// function binarySearch(arr, data, left=0, right=arr.length-1){
+//    if(left>right){
+//      return
+//    }
+
+//    let mid = Math.floor((left+right)/2)
+//    if(arr[mid]===data){
+//     return mid
+//    }else if(arr[mid]<data){
+//     return binarySearch(arr, data, mid+1, right)
+//    }else{
+//     return binarySearch(arr, data, left, mid-1)
+//    }
+// }
+
+// console.log(binarySearch([1,2,3,4,5], 3));
+
+
 // function bubbleSort(arr) {
 //     let swapped
 //     do {
@@ -1741,6 +1775,7 @@
 //             if (arr[i] > arr[i + 1]) {
 //                 [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
 //                 swapped = true
+//                 console.log(`Swapped ${arr[i]} and ${arr[i+1]}  now arr : ${arr}`);
 //             }
 //         }
 //     } while (swapped);
