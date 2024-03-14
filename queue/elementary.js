@@ -79,6 +79,25 @@ class Queue {
     }
 
 
+    queueToStack(){
+        let temp = this.front
+        this.top = null
+        while(temp){
+            let newNode = {
+                data : temp.data,
+                next : null
+            }
+            if(this.top===null){
+                this.top = newNode
+            }else{
+                newNode.next = this.top
+                this.top = newNode
+            }
+            temp = temp.next
+        }
+    }
+
+
     print() {
         if (this.front === null) {
             console.log("Queue is empty");
@@ -95,15 +114,4 @@ class Queue {
 }
 
 
-const queue = new Queue()
-// queue.enqueue(10)
-// queue.enqueue(20)
-// queue.enqueue(30)
-queue.enqueFormat([3, 2, -2, -6, 0, 7, 4])
-queue.print()
-// queue.dequeue()
-queue.reverse()
-queue.print()
-queue.sort()
-queue.print()
 
