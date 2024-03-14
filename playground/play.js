@@ -1347,6 +1347,112 @@
 // stack.reverse()
 // stack.print()
 
+
+
+class Node {
+    constructor(value){
+        this.data = value
+        this.next = null
+    }
+}
+
+class Queue {
+    constructor(){
+        this.size = 0
+        this.rear = null
+        this.front = null
+    }
+
+    enque(value){
+        const newNode = new Node(value)
+        if(this.front===null){
+            this.front = newNode
+            this.rear = newNode
+        }else {
+            this.rear.next = newNode 
+            this.rear = newNode
+        }
+        this.size++
+    }
+
+    deque(){
+        if(this.front===null){
+            return
+        }else{
+            this.rear = this.rear.next
+            this.size--
+        }
+    }
+
+    enqueFormat(arr){
+        for(let i=0;i<arr.length;i++){
+            this.enque(arr[i])
+        }
+    }
+
+    sort(){
+        let swapped
+        do {
+            swapped = false
+            let curr = this.front
+            while(curr&&curr.next){
+                if(curr.data>curr.next.data){
+                    let temp = curr.data
+                    curr.data = curr.next.data
+                    curr.next.data = temp
+                    swapped = true
+                }
+                curr = curr.next
+            }
+        } while (swapped);
+    }
+
+    reverse(){
+        if(this.front===null&&this.front.next===null){
+            return
+        }
+        let prev = null
+        let curr = this.front
+        while(curr){
+            let next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.rear = this.front
+        this.front = prev
+    }
+
+    print(){
+        if(this.front===null){
+            return
+        }else{
+            let curr = this.front
+            let elems = ""
+            while(curr){
+                elems+=curr.data+" "
+                curr = curr.next
+            }
+            console.log(elems);
+        }
+    }
+}
+
+
+const q = new Queue()
+q.enqueFormat([2,5,-6,-2,0,7])
+q.print()
+q.sort()
+q.print()
+q.reverse()
+q.print()
+
+
+
+
+
+
+
 // function linearSearch(arr, data, index=0){
 //     if(index>=arr.length){
 //         return
