@@ -60,3 +60,8 @@ class HashTable {
         }
     }
 }
+
+// const ht = new HashTable(40)
+// ht.set("name", "navneeth")
+// ht.set("age", "21")
+// ht.print()
