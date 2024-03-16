@@ -2182,10 +2182,223 @@
 // }
 
 
+// function partition(arr, start, end){
+//     let pivot = arr[end]
+//     let i = start - 1
+//     for(let j=start;j<end;j++){
+//         if(arr[j]<pivot){
+//             i++
+//             swap(arr, i, j)
+//         }
+//     }
+//     swap(arr, i+1, end)
+//     return i+1
+// }
+
+// function swap(arr, i, j){
+//     let temp = arr[i]
+//     arr[i] = arr[j]
+//     arr[j] = temp
+// }
 
 
-// console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
-// console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
-// console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+// class HashTable {
+//     constructor(size){
+//         this.table = new Array(size)
+//         this.size = size
+//     }
+
+//     _hash(key){
+//         let total = 0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+
+//     set(key, value){
+//         const index = this._hash(key)
+//         const bucket = this.table[index]
+//         if(!bucket){
+//             this.table[index] = [[key,value]]
+//         }else{
+//             const sameKeyItem = bucket.find(item=>item[0]===key)
+//             if(sameKeyItem){
+//                 sameKeyItem[1] = value
+//             }else{
+//                 bucket.push([key, value])
+//             }
+            
+//         }
+//     }
+
+//     get(key){
+//         let index = this._hash(key)
+//         let bucket = this.table[index]
+//         if(bucket){
+//             let sameKeyItem = bucket.find(item=>item[0]===key)
+//             if(sameKeyItem){
+//                 return sameKeyItem[1]
+//             }
+//         }
+//         return undefined
+//     }
+
+//     remove(key){
+//         let index = this._hash(key)
+//         let bucket = this.table[index]
+//         if(bucket){
+//             let sameKeyItem = bucket.find(item=>item[0]===key)
+//             if(sameKeyItem){
+//                 bucket.splice(bucket.indexOf(sameKeyItem),1)
+//             }
+//         }
+//     }
+
+//     print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i, this.table[i]);
+//             }
+//         }
+//     }
+    
+// }
+
+// const ht = new HashTable(50)
+// ht.set("name", "navneeth")
+// ht.set("age", "21")
+// ht.print()
+
+
+
+// function quickSort(arr, start=0, end = arr.length-1){
+//     if(start<end){
+//         const pivotIndex = partition(arr, start, end)
+//         quickSort(arr, pivotIndex+1, end)
+//         quickSort(arr, start, pivotIndex-1)
+//     }
+//     return arr
+// }
+
+
+// function bubbleSort(arr){
+//     let swapped
+//     do {
+//         swapped = false
+//         for(let i=0;i<arr.length;i++){
+//             if(arr[i]>arr[i+1]){
+//                 let temp = arr[i]
+//                 arr[i] = arr[i+1]
+//                 arr[i+1] = temp
+//                 swapped = true
+//             }
+//         }
+//     } while (swapped);
+//     return arr
+// }
+
+
+// function insertionSort(arr){
+//     for(let i=1;i<arr.length;i++){
+//         let temp = arr[i]
+//         let j = i - 1
+//         while(j>=0&&arr[j]>temp){
+//             arr[j+1] = arr[j]
+//             j--
+//         }
+//         arr[j+1] = temp
+//     }
+//     return arr
+// }
+
+
+// function selectionSort(arr){
+//     for(let i=0;i<arr.length-1;i++){
+//         let min = i
+//         for(let j=i+1;j<arr.length;j++){
+//             if(arr[j]<arr[min]){
+//                 min = j
+//             }
+//         }
+//         [arr[i],arr[min]] = [arr[min], arr[i]]
+//     }
+//     return arr
+// }
+
+
+// function mergeSort(arr){
+//     if(arr.length<=1){
+//         return arr
+//     }
+//     let mid = Math.floor(arr.length/2)
+//     let left = arr.slice(0,mid)
+//     let right = arr.slice(mid)
+//     return merge(mergeSort(left), mergeSort(right))
+// }
+
+// function merge(left, right){
+//     let result = []
+//     let rightIndex = 0
+//     let leftIndex = 0
+//     while(leftIndex<left.length&&rightIndex<right.length){
+//         if(left[leftIndex]<right[rightIndex]){
+//             result.push(left[leftIndex])
+//             leftIndex++
+//         }else{
+//             result.push(right[rightIndex])
+//             rightIndex++
+//         }
+//     }
+//     return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+// }
+
+
+
+// function bubbleSort(arr){
+//     let swapped
+//     do {
+//         swapped = false
+//         for(let i=0;i<arr.length;i++){
+//             if(arr[i]>arr[i+1]){
+//                 [arr[i+1],arr[i]] = [arr[i],arr[i+1]]
+//                 swapped = true
+//             }
+//         }
+//     } while (swapped);
+//     return arr
+// }
+
+
+// function insertionSort(arr){
+//     for(let i=1;i<arr.length;i++){
+//         let temp = arr[i]
+//         let j = i - 1
+//         while(j>=0&&arr[j]>temp){
+//             arr[j+1] = arr[j]
+//             j--
+//         }
+//         arr[j+1] = temp
+//     }
+//     return arr
+// }
+
+
+// function selectionSort(arr){
+//     for(let i=0;i<arr.length-1;i++){
+//         let min = i
+//         for(let j=i+1;j<arr.length;j++){
+//             if(arr[j]<arr[min]){
+//                 min = j
+//             }
+//         }
+//         [arr[min], arr[i]] = [arr[i], arr[min]]
+//     }
+//     return arr
+// }
+
+console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
+console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
+console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
