@@ -2400,5 +2400,5 @@
 // console.log(bubbleSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(insertionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]))
 // console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
-console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
-console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+// console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+// console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
