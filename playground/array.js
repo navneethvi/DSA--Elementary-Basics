@@ -22,3 +22,5 @@ function rotateArrayPure(arr, k) {
 }
 
 // console.log(rotateArrayPure([1,2,3,4,5,6], 1));
+
+
