@@ -17,5 +17,5 @@ class BinarySearchTree {
 
 }
 
-// const bst = new BinarySearchTree()
-// console.log("Tree is empty : ",bst.isEmpty());
+const bst = new BinarySearchTree()
+console.log("Tree is empty : ",bst.isEmpty());
