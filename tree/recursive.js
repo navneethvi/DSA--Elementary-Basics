@@ -24,6 +24,8 @@ class BinarySearchTree {
         }
     }
 
+   
+
     insertNode(root, newNode){
         if(newNode.data < root.data){
             if(root.left === null){
@@ -33,12 +35,13 @@ class BinarySearchTree {
             }
         }else{
             if(root.right === null){
-                root.left = newNode
+                root.right = newNode
             }else{
                 this.insertNode(root.right, newNode)
             }
         }
     }
+ 
 
 }
 
@@ -47,3 +50,14 @@ console.log("Tree is empty : ",bst.isEmpty());
 bst.insert(10)
 bst.insert(20)
 console.log("Tree is empty : ",bst.isEmpty());
+
+
+
+
+
+
+
+
+
+
+
