@@ -43,62 +43,95 @@ class BinarySearchTree {
     // }
 
 
-    insert(value) {
+    // insert(value) {
+    //     const newNode = new Node(value)
+    //     if (this.root === null) {
+    //         this.root = newNode
+    //     } else {
+    //         this.insertOne(this.root, newNode)
+    //     }
+    // }
+
+    // insertOne(root, newNode) {
+    //     if (newNode.data < root.data) {
+    //         if (root.left === null) {
+    //             root.left = newNode
+    //         } else {
+    //             this.insertOne(root.left, newNode)
+    //         }
+    //     } else {
+    //         if (root.right === null) {
+    //             root.right = newNode
+    //         } else {
+    //             this.insertOne(root.right, newNode)
+    //         }
+    //     }
+    // }
+
+
+    // search(value){
+    //     if(this.root === null){
+    //         return false
+    //     }else{
+    //         let curr = this.root
+    //         while(curr !== null){
+    //             if(curr.data === value){
+    //                 return true
+    //             }else if(value < curr.data){
+    //                 curr = curr.left
+    //             }else{
+    //                 curr = curr.right
+    //             }
+    //         }
+    //         return false
+    //     }
+    // }
+
+    // search(root, value) {
+    //     if (root === null) {
+    //         return false
+    //     } else {
+    //         if (root.data === value) {
+    //             return true
+    //         } else if (value < root.data) {
+    //             return this.search(root.left, value)
+    //         } else {
+    //             return this.search(root.right, value)
+    //         }
+    //     }   
+    // }
+
+    insert(value){
         const newNode = new Node(value)
-        if (this.root === null) {
-            this.root = newNode
-        } else {
-            this.insertOne(this.root, newNode)
-        }
-    }
-
-    insertOne(root, newNode) {
-        if (newNode.data < root.data) {
-            if (root.left === null) {
-                root.left = newNode
-            } else {
-                this.insertOne(root.left, newNode)
-            }
-        } else {
-            if (root.right === null) {
-                root.right = newNode
-            } else {
-                this.insertOne(root.right, newNode)
-            }
-        }
-    }
-
-
-    search(value){
         if(this.root === null){
-            return false
+            this.root = newNode
         }else{
-            let curr = this.root
-            while(curr !== null){
-                if(curr.data === value){
-                    return true
-                }else if(value < curr.data){
-                    curr = curr.left
-                }else{
-                    curr = curr.right
-                }
-            }
-            return false
+            this.insertNode(this.root, newNode)
         }
     }
 
-    search(root, value) {
-        if (root === null) {
-            return false
-        } else {
-            if (root.data === value) {
-                return true
-            } else if (value < root.data) {
-                return this.search(root.left, value)
-            } else {
-                return this.search(root.right, value)
+    insertNode(root, newNode){
+        if(newNode.data < root.data){
+            if(root.left === null){
+                root.left = newNode
+            }else{
+                this.insertNode(root.left, newNode)
             }
-        }   
+        }else{
+            if(root.right === null){
+                root.right = newNode
+            }else{
+                this.insertNode(root.right, newNode)
+            }
+        }
+    }
+
+    preOrder(root){
+        if(root){
+            console.log(root.data);
+            this.preOrder(root.left)
+            this.preOrder(root.right)
+        }
     }
 }
 
@@ -109,5 +142,6 @@ bst.insert(10)
 bst.insert(5)
 bst.insert(11)
 console.log("is Empty : ", bst.isEmpty());
+bst.preOrder(bst.root)
 console.log(bst.search(bst.root, 5))
 console.log(bst.search(5))
