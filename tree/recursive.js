@@ -65,22 +65,65 @@ class BinarySearchTree {
         }
     }
 
-    inOrder(root){
-        if(root){
+    inOrder(root) {
+        if (root) {
             this.inOrder(root.left)
             console.log(root.data)
             this.inOrder(root.right)
         }
     }
 
-    postOrder(root){
-        if(root){
+    postOrder(root) {
+        if (root) {
             this.postOrder(root.left)
             this.postOrder(root.right)
             console.log(root.data)
         }
     }
 
+    minimum(root) {
+        if (!root.left) {
+            return root.data
+        } else {
+            return this.minimum(root.left)
+        }
+    }
+
+    maximum(root) {
+        if (!root.right) {
+            return root.data
+        } else {
+            return this.maximum(root.right)
+        }
+    }
+
+    delete(value) {
+        this.root = this.deleteNode(this.root, value)
+    }
+
+    deleteNode(root, value) {
+        if (root === null) {
+            return node
+        }
+
+        if (value < root.data) {
+            root.left = this.deleteNode(root.left, value)
+        } else if (value > root.data) {
+            root.right = this.deleteNode(root.right, value)
+        } else {
+            if (!root.left && !root.right) {
+                return null
+            }
+            if (!root.left) {
+                return root.right
+            } else if (!root.right) {
+                return root.left
+            }
+            root.value = this.minimum(root.right)
+            root.right = this.deleteNode(root.right, root.value)
+        }
+        return root
+    }
 
 }
 
@@ -94,7 +137,10 @@ bst.insert(7)
 
 // console.log(bst.search(bst.root, 20));
 // console.log("Tree is empty : ", bst.isEmpty());
-bst.postOrder(bst.root)
+// bst.postOrder(bst.root)
+console.log(bst.minimum(bst.root));
+console.log(bst.maximum(bst.root));
+
 
 
 
