@@ -1,8 +1,8 @@
 class Node {
     constructor(value) {
         this.data = value
-        this.right = null
         this.left = null
+        this.right = null
     }
 }
 
@@ -24,8 +24,6 @@ class BinarySearchTree {
         }
     }
 
-
-
     insertNode(root, newNode) {
         if (newNode.data < root.data) {
             if (root.left === null) {
@@ -33,7 +31,7 @@ class BinarySearchTree {
             } else {
                 this.insertNode(root.left, newNode)
             }
-        } else {
+        } else if (newNode.data > root.data) {
             if (root.right === null) {
                 root.right = newNode
             } else {
@@ -42,107 +40,143 @@ class BinarySearchTree {
         }
     }
 
-    search(root, value) {
-        if (root === null) {
-            return false
-        } else {
-            if (root.data === value) {
-                return true
-            } else if (value < root.data) {
-                return this.search(root.left, value)
-            } else {
-                return this.search(root.right, value)
-            }
+    levelOrder() {
+        const queue = []
+        queue.push(this.root)
+        while (queue.length) {
+            let curr = queue.shift()
+            console.log(curr.data);
+            if (curr.left) queue.push(curr.left)
+            if (curr.right) queue.push(curr.right)
         }
-
     }
 
-    preOrder(root) {
-        if (root) {
-            console.log(root.data)
+    preOrder(root){
+        if(root){
+            console.log(root.data);
             this.preOrder(root.left)
             this.preOrder(root.right)
         }
     }
 
-    inOrder(root) {
-        if (root) {
-            this.inOrder(root.left)
-            console.log(root.data)
-            this.inOrder(root.right)
+    inOrder(root, arr){
+        if(root){
+            this.inOrder(root.left, arr)
+            console.log(root.data);
+            this.inOrder(root.right, arr)
         }
     }
 
-    postOrder(root) {
-        if (root) {
+    postOrder(root){
+        if(root){
             this.postOrder(root.left)
             this.postOrder(root.right)
-            console.log(root.data)
+            console.log(root.data);
         }
     }
 
-    minimum(root) {
-        if (!root.left) {
-            return root.data
+    search(root, value) {
+        if (root) {
+            if (value === root.data) {
+                return true
+            }
+            if (value < root.data) {
+                return this.search(root.left, value)
+            } else {
+                return this.search(root.right, value)
+            }
         } else {
-            return this.minimum(root.left)
+            return false
         }
     }
 
-    maximum(root) {
-        if (!root.right) {
-            return root.data
-        } else {
-            return this.maximum(root.right)
-        }
-    }
-
-    delete(value) {
+    delete(value){
         this.root = this.deleteNode(this.root, value)
     }
 
-    deleteNode(root, value) {
-        if (root === null) {
-            return node
+    minimum(root){
+        if(!root){
+            return null
         }
+        while(root.left){
+            root = root.left
+        }
+        return root.data
+    }
 
-        if (value < root.data) {
+    deleteNode(root, value){
+        if(root === null){
+            return root
+        }
+        if(value < root.data){
             root.left = this.deleteNode(root.left, value)
-        } else if (value > root.data) {
+        }else if(value > root.data){
             root.right = this.deleteNode(root.right, value)
-        } else {
-            if (!root.left && !root.right) {
+        }else{
+            if(!root.left && !root.right){
                 return null
             }
-            if (!root.left) {
-                return root.right
-            } else if (!root.right) {
-                return root.left
-            }
-            root.value = this.minimum(root.right)
-            root.right = this.deleteNode(root.right, root.value)
+            if(!root.left) return root.right
+            else if(!root.right) return root.left
+            root.data = this.minimum(root.right)
+            root.right = this.deleteNode(root.right, root.data)
         }
         return root
+    }
+
+    maximum(root){
+        if(!root){
+            return null
+        }else{
+            while(root.right){
+                root = root.right
+            }
+            return root.data
+        }
+    }
+
+    // closestValue(root, value){
+    //     let closest = root.data
+    //     let curr = root
+    //     while(curr){
+    //         if(Math.abs(curr.data - value) < Math.abs(closest - value)){
+    //             closest = curr.data
+    //         }
+    //     }
+    // }
+
+    isBST(){
+        let arr = []
+        this.inOrder(this.root, arr)
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]<arr[i-1]){
+                return false
+            }
+        }
+        return true
     }
 
 }
 
 const bst = new BinarySearchTree()
-console.log("Tree is empty : ", bst.isEmpty());
+
+
+console.log("Is empty : ", bst.isEmpty());
 bst.insert(10)
 bst.insert(5)
 bst.insert(15)
 bst.insert(3)
 bst.insert(7)
+console.log("is Empty : ", bst.isEmpty());
+bst.levelOrder()
+console.log("Minimum", bst.minimum(bst.root));
+bst.delete(15)
+console.log("Maximum", bst.maximum(bst.root));
 
-// console.log(bst.search(bst.root, 20));
-// console.log("Tree is empty : ", bst.isEmpty());
-// bst.postOrder(bst.root)
-console.log(bst.minimum(bst.root));
-console.log(bst.maximum(bst.root));
-
-
-
+console.log(bst.search(bst.root, 3));
+bst.levelOrder()
+console.log("isBst", bst.isBST());
+console.log(bst.search(bst.root, 3));
 
 
 
