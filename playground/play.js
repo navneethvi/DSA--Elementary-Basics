@@ -2402,3 +2402,125 @@
 // console.log(selectionSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(quickSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
 // console.log(mergeSort([3, 2, 5, 6, 8, 9, 11, 2, 4]));
+
+
+
+class Node {
+    constructor(value){
+        this.data = value
+        this.left = null
+        this.right = null
+    }
+}
+
+class BinarySearchTree {
+    constructor(){
+        this.root = null
+    }
+
+    isEmpty(){
+        return this.root === null
+    }
+
+    insert(value){
+        const newNode = new Node(value)
+        if(this.root === null){
+            this.root = newNode
+        }else{
+            this.insertNode(this.root, newNode)
+        }
+    }
+
+    insertNode(root, newNode){
+        if(newNode.data < root.data){
+            if(root.left === null){
+                root.left = newNode
+            }else{
+                this.insertNode(root.left, newNode)
+            }
+        }else{
+            if(root.right === null){
+                root.right = newNode
+            }else{
+                this.insertNode(root.right, newNode)
+            }
+        }
+    }
+
+    search(root, value){
+        if(root === null){
+            return false
+        }else{
+            if(root.data === value){
+                return true
+            }else if(value < root.data){
+                return this.search(root.left, value)
+            }else{
+                return this.search(root.right, value)
+            }
+        }
+    }
+
+    levelOrder(){
+        let queue = []
+        queue.push(this.root)
+        while(queue.length){
+            let curr = queue.shift()
+            console.log(curr.data);
+            if(curr.left) queue.push(curr.left)
+            if(curr.right) queue.push(curr.right)
+        }
+    }
+
+    minimum(root){
+        if(!root.left){
+            return root.data
+        }else{
+            return this.minimum(root.left)
+        }
+    }
+
+    maximum(root){
+        if(!root.right){
+            return root.data
+        }else{
+            return this.maximum(root.right)
+        }
+    }
+
+    inOrder(root, arr){
+        if(root){
+            this.inOrder(root.left, arr)
+            console.log(root.data);
+            this.inOrder(root.right, arr)
+        }
+    }
+
+    isBST(){
+        const arr = []
+        this.inOrder(this.root, arr)
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]<arr[i-1]){
+                return false
+            }
+        }
+        return true
+    }
+
+}
+
+
+const bst = new BinarySearchTree()
+console.log("Is empty : ", bst.isEmpty());
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(3)
+bst.insert(7)
+console.log("is Empty : ", bst.isEmpty());
+console.log("Search : ",bst.search(bst.root, 3));
+bst.levelOrder()
+console.log("isBST : ", bst.isBST());
+console.log("Minimum", bst.minimum(bst.root));
+// bst.delete(15)
+console.log("Maximum", bst.maximum(bst.root));
