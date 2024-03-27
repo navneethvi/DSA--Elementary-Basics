@@ -2925,3 +2925,60 @@
 // // console.log("Minimum", bst.minimum(bst.root));
 // console.log("Maximum", bst.maximum(bst.root));
 // bst.levelOrder()
+
+class MaxHeap {
+    constructor(){
+        this.heap = []
+    }
+
+    getParentIndex(i){
+        return Math.floor((i-1)/2)
+    }
+
+    getLeftChildIndex(i){
+        return 2*i+1
+    }
+
+    getRightChildIndex(i){
+        return 2*i+2
+    }
+
+    swap(i1, i2){
+        [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
+    }
+
+    insert(value){
+        this.heap[this.heap.length] = value
+        this.heapifyUp()
+    }
+
+    heapifyUp(){
+        let currentIndex = this.heap.length - 1
+        while(currentIndex > 0 && this.heap[currentIndex] > this.heap[this.getParentIndex(currentIndex)]){
+            this.swap(currentIndex, this.getParentIndex(currentIndex))
+            currentIndex = this.getParentIndex(currentIndex)
+        }
+    }
+
+    levelOrder(){
+        let queue = [0]
+        while(queue.length > 0){
+            let curr  = queue.shift()
+            console.log(this.heap[curr]);
+            let left = this.getLeftChildIndex(curr)
+            let right = this.getRightChildIndex(curr)
+            if(left<this.heap.length) queue.push(left)
+            if(right<this.heap.length) queue.push(right)
+        }
+    }
+}
+
+const h = new MaxHeap()
+h.insert(10)
+h.insert(30)
+h.insert(20)
+h.insert(11)
+h.insert(60)
+
+console.log(h.heap);
+h.levelOrder()

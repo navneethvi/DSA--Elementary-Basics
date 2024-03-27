@@ -24,6 +24,18 @@ class MaxHeap {
         this.heapifyUp()
     }
 
+    levelOrder(){
+        let queue = [0]
+        while(queue.length > 0){
+            let curr  = queue.shift()
+            console.log(this.heap[curr]);
+            let left = this.getLeftChildIndex(curr)
+            let right = this.getRightChildIndex(curr)
+            if(left<this.heap.length) queue.push(left)
+            if(right<this.heap.length) queue.push(right)
+        }
+    }
+
     heapifyUp() {
         let currentIndex = this.heap.length - 1
         while (currentIndex > 0 && this.heap[currentIndex] > this.getParentIndex(currentIndex)) {
