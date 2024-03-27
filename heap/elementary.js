@@ -19,21 +19,22 @@ class MaxHeap {
         [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
     }
 
-    insert(value) {
-        this.heap[this.heap.length] = value
-        this.heapifyUp()
-    }
 
-    levelOrder(){
+    levelOrder() {
         let queue = [0]
-        while(queue.length > 0){
-            let curr  = queue.shift()
+        while (queue.length > 0) {
+            let curr = queue.shift()
             console.log(this.heap[curr]);
             let left = this.getLeftChildIndex(curr)
             let right = this.getRightChildIndex(curr)
-            if(left<this.heap.length) queue.push(left)
-            if(right<this.heap.length) queue.push(right)
+            if (left < this.heap.length) queue.push(left)
+            if (right < this.heap.length) queue.push(right)
         }
+    }
+
+    insert(value) {
+        this.heap[this.heap.length] = value
+        this.heapifyUp()
     }
 
     heapifyUp() {
