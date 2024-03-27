@@ -1,46 +1,42 @@
 class MaxHeap {
-    constructor(){
+    constructor() {
         this.heap = []
     }
 
-    getParentIndex(i){
-        return Math.floor((i-1)/2)
+    getParentIndex(i) {
+        return Math.floor((i - 1) / 2)
     }
 
-    getLeftChildIndex(i){
-        return 2*i+1
+    getLeftChildIndex(i) {
+        return 2 * i + 1
     }
 
-    getRightChildIndex(i){
-        return 2*i+2
+    getRightChildIndex(i) {
+        return 2 * i + 2
     }
 
-    swap(i1, i2){
+    swap(i1, i2) {
         [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
     }
 
-    insert(value){
+    insert(value) {
         this.heap[this.heap.length] = value
         this.heapifyUp()
     }
 
-    heapifyUp(){
+    heapifyUp() {
         let currentIndex = this.heap.length - 1
-        while(this.heap[currentIndex]>this.getParentIndex(currentIndex)){
+        while (currentIndex > 0 && this.heap[currentIndex] > this.getParentIndex(currentIndex)) {
             this.swap(currentIndex, this.getParentIndex(currentIndex))
             currentIndex = this.getParentIndex(currentIndex)
         }
     }
-
-    delete(){
-        let max = this.heap[0]
-        this.heap[0] = this.heap[this.heap.length-1]
-        this.heap.length--
-        this.heapifyDown()
-        return max
-    }
-
-    heapifyDown(){
-        let currentIndex = 0
-    }
 }
+
+const heap = new MaxHeap()
+heap.insert(10)
+heap.insert(20)
+heap.insert(44)
+heap.insert(22)
+heap.insert(60)
+console.log(heap.heap);

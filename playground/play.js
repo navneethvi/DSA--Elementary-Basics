@@ -1303,7 +1303,7 @@
 //         this.size++
 //     }
 
-   
+
 //     pushString(str){
 //         for(let i=0;i<str.length;i++){
 //             this.push(str[i])
@@ -2169,7 +2169,7 @@
 //     let mid = Math.floor(arr.length/2)
 //     let left = arr.slice(0,mid)
 //     let right = arr.slice(mid)
-    
+
 // }
 
 // function mergeInPlace(arr, left, right){
@@ -2228,7 +2228,7 @@
 //             }else{
 //                 bucket.push([key, value])
 //             }
-            
+
 //         }
 //     }
 
@@ -2262,7 +2262,7 @@
 //             }
 //         }
 //     }
-    
+
 // }
 
 // const ht = new HashTable(50)
@@ -2698,5 +2698,230 @@
 // bst.levelOrder()
 // bst.delete(18)
 // console.log("Minimum", bst.minimum(bst.root));
+// console.log("Maximum", bst.maximum(bst.root));
+// bst.levelOrder()
+
+
+
+// class MaxHeap {
+//     constructor(){
+//         this.heap = []
+//     }
+
+//     getParentIndex(i){
+//         return Math.floor((i-1)/2)
+//     }
+
+//     getLeftChildIndex(i){
+//         return 2*i+1
+//     }
+
+//     getRightChildIndex(i){
+//         return 2*i+2
+//     }
+
+//     swap(i1, i2){
+//         [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
+//     }
+
+//     insert(value){
+//         this.heap[this.heap.length] = value
+//         this.heapifyUp()
+//     }
+
+//     heapifyUp(){
+//         let currentIndex = this.heap.length - 1
+//         while(currentIndex > 0 && this.heap[currentIndex] > this.getParentIndex(currentIndex)){
+//             this.swap(currentIndex, this.getParentIndex(currentIndex))
+//             currentIndex = this.getParentIndex(currentIndex)
+//         }
+//     }
+// }
+
+// const heap = new MaxHeap()
+// heap.insert(10)
+// heap.insert(20)
+// heap.insert(44)
+// heap.insert(22)
+// heap.insert(60)
+// console.log(heap.heap);
+
+
+
+
+// class MaxHeap {
+//     constructor(){
+//         this.heap = []
+//     }
+
+//     getParentIndex(i){
+//         return Math.floor((i-1)/2)
+//     }
+
+//     getLeftChildIndex(i){
+//         return 2*i+1
+//     }
+
+//     getRightChildIndex(i){
+//         return 2*i+2
+//     }
+
+//     insert(value){
+//         this.heap[this.heap.length] = value
+//         this.heapifyUp()
+//     }
+
+//     swap(i1, i2){
+//         [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
+//     }
+
+//     heapifyUp(){
+//         let currentIndex = this.heap.length - 1
+//         while(currentIndex > 0 && this.heap[currentIndex] > this.getParentIndex(currentIndex)){
+//             this.swap(currentIndex, this.getParentIndex(currentIndex))
+//             currentIndex = this.getParentIndex(currentIndex)
+//         }
+//     }
+// }
+
+// const h = new MaxHeap()
+// h.insert(60)
+// h.insert(20)
+// h.insert(23)
+// h.insert(3)
+// h.insert(44)
+// h.insert(80)
+// console.log(h.heap);
+
+
+// class Node {
+//     constructor(value) {
+//         this.data = value
+//         this.left = null
+//         this.right = null
+//     }
+// }
+
+// class BinarySearchTree {
+//     constructor() {
+//         this.root = null
+//     }
+
+//     isEmpty() {
+//         return this.root === null
+//     }
+
+//     insert(value) {
+//         const newNode = new Node(value)
+//         if (this.root === null) {
+//             this.root = newNode
+//         } else {
+//             this.insertNode(this.root, newNode)
+//         }
+//     }
+
+//     insertNode(root, newNode) {
+//         if (newNode.data < root.data) {
+//             if (root.left === null) {
+//                 root.left = newNode
+//             } else {
+//                 this.insertNode(root.left, newNode)
+//             }
+//         } else {
+//             if (root.right === null) {
+//                 root.right = newNode
+//             } else {
+//                 this.insertNode(root.right, newNode)
+//             }
+//         }
+//     }
+
+//     inOrder(root) {
+//         if (root) {
+//             this.inOrder(root.left)
+//             console.log(root.data);
+//             this.inOrder(root.right)
+//         }
+//     }
+
+//     levelOrder() {
+//         let queue = []
+//         queue.push(this.root)
+//         while (queue.length) {
+//             let curr = queue.shift()
+//             console.log(curr.data);
+//             if (curr.left) queue.push(curr.left)
+//             if (curr.right) queue.push(curr.right)
+//         }
+//     }
+
+//     isBst() {
+//         let arr = []
+//         this.inOrder(this.root)
+//         for (let i = 0; i < arr.length; i++) {
+//             if (arr[i] < arr[i - 1]) {
+//                 return false
+//             }
+//         }
+//         return true
+//     }
+
+//     maximum(root){
+//         if(!root){
+//             return null
+//         }else{
+//             while(root.right){
+//                 root = root.right
+//             }
+//             return root.data
+//         }
+//     }
+
+//     delete(value) {
+//         this.root = this.deleteNode(this.root, value)
+//     }
+
+//     deleteNode(root, value) {
+//         if (root === null) {
+//             return null
+//         }
+//         if (value < root.data) {
+//             root.left = this.deleteNode(root.left, value)
+//         } else if (value > root.data) {
+//             root.right = this.deleteNode(root.right, value)
+//         } else {
+//             if(!root.left && !root.right){
+//                 return null
+//             }
+//             if(!root.left){
+//                 return root.left
+//             }else if(!root.right){
+//                 return root.left
+//             }
+//             root.data = this.maximum(root.right)
+//             root.right = this.delete(root.right, root.data)
+//         }
+//         return root
+//     }
+
+// }
+
+
+
+// const bst = new BinarySearchTree()
+// console.log("isEmpty : ", bst.isEmpty());
+// bst.insert(10)
+// bst.insert(7)
+// bst.insert(9)
+// bst.insert(5)
+// bst.insert(4)
+// bst.insert(15)
+// bst.insert(18)
+// console.log("isEmpty : ", bst.isEmpty());
+// // bst.inOrder(bst.root)
+// console.log("isBst : ", bst.isBst());
+// bst.levelOrder()
+// bst.delete(18)
+// // console.log("Minimum", bst.minimum(bst.root));
 // console.log("Maximum", bst.maximum(bst.root));
 // bst.levelOrder()
