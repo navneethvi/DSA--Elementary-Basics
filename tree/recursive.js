@@ -135,16 +135,6 @@ class BinarySearchTree {
         }
     }
 
-    // closestValue(root, value){
-    //     let closest = root.data
-    //     let curr = root
-    //     while(curr){
-    //         if(Math.abs(curr.data - value) < Math.abs(closest - value)){
-    //             closest = curr.data
-    //         }
-    //     }
-    // }
-
     isBST(){
         let arr = []
         this.inOrder(this.root, arr)

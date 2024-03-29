@@ -2926,102 +2926,161 @@
 // console.log("Maximum", bst.maximum(bst.root));
 // bst.levelOrder()
 
-class MaxHeap {
-    constructor() {
-        this.heap = []
-    }
+// class MaxHeap {
+//     constructor() {
+//         this.heap = []
+//     }
 
-    getParentIndex(i) {
-        return Math.floor((i - 1) / 2)
-    }
+//     getParentIndex(i) {
+//         return Math.floor((i - 1) / 2)
+//     }
 
-    getLeftChildIndex(i) {
-        return 2 * i + 1
-    }
+//     getLeftChildIndex(i) {
+//         return 2 * i + 1
+//     }
 
-    getRightChildIndex(i) {
-        return 2 * i + 2
-    }
+//     getRightChildIndex(i) {
+//         return 2 * i + 2
+//     }
 
-    swap(i1, i2) {
-        [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
-    }
+//     swap(i1, i2) {
+//         [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]]
+//     }
 
-    insert(value) {
-        this.heap[this.heap.length] = value
-        this.heapifyUp()
-    }
+//     insert(value) {
+//         this.heap[this.heap.length] = value
+//         this.heapifyUp()
+//     }
 
-    heapifyUp() {
-        let currentIndex = this.heap.length - 1
-        while (currentIndex > 0 && this.heap[currentIndex] > this.heap[this.getParentIndex(currentIndex)]) {
-            this.swap(currentIndex, this.getParentIndex(currentIndex))
-            currentIndex = this.getParentIndex(currentIndex)
-        }
-    }
+//     heapifyUp() {
+//         let currentIndex = this.heap.length - 1
+//         while (currentIndex > 0 && this.heap[currentIndex] > this.heap[this.getParentIndex(currentIndex)]) {
+//             this.swap(currentIndex, this.getParentIndex(currentIndex))
+//             currentIndex = this.getParentIndex(currentIndex)
+//         }
+//     }
 
-    levelOrder() {
-        let queue = [0]
-        while (queue.length > 0) {
-            let curr = queue.shift()
-            console.log(this.heap[curr]);
-            let left = this.getLeftChildIndex(curr)
-            let right = this.getRightChildIndex(curr)
-            if (left < this.heap.length) queue.push(left)
-            if (right < this.heap.length) queue.push(right)
-        }
-    }
+//     levelOrder() {
+//         let queue = [0]
+//         while (queue.length > 0) {
+//             let curr = queue.shift()
+//             console.log(this.heap[curr]);
+//             let left = this.getLeftChildIndex(curr)
+//             let right = this.getRightChildIndex(curr)
+//             if (left < this.heap.length) queue.push(left)
+//             if (right < this.heap.length) queue.push(right)
+//         }
+//     }
 
-    delete() {
-        let maxValue = this.heap[0]
-        this.heap[0] = this.heap.length - 1
-        this.heap.length--
-        this.heapifyDown()
-        return maxValue
-    }
+//     delete() {
+//         let maxValue = this.heap[0]
+//         this.heap[0] = this.heap.length - 1
+//         this.heap.length--
+//         this.heapifyDown()
+//         return maxValue
+//     }
 
-    heapifyDown() {
-        let currentIndex = 0
-        while (this.getLeftChildIndex(currentIndex) < this.heap.length) {
-            let largestChildIndex = this.getLeftChildIndex(currentIndex)
-            let rightChildIndex = this.getRightChildIndex(currentIndex)
-            if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largestChildIndex]) {
-                largestChildIndex = rightChildIndex
-            }
-            if (this.heap[currentIndex] < this.heap[largestChildIndex]) {
-                this.swap(currentIndex, largestChildIndex)
-                currentIndex = largestChildIndex
-            } else {
-                break
-            }
-        }
-    }
+//     heapifyDown() {
+//         let currentIndex = 0
+//         while (this.getLeftChildIndex(currentIndex) < this.heap.length) {
+//             let largestChildIndex = this.getLeftChildIndex(currentIndex)
+//             let rightChildIndex = this.getRightChildIndex(currentIndex)
+//             if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largestChildIndex]) {
+//                 largestChildIndex = rightChildIndex
+//             }
+//             if (this.heap[currentIndex] < this.heap[largestChildIndex]) {
+//                 this.swap(currentIndex, largestChildIndex)
+//                 currentIndex = largestChildIndex
+//             } else {
+//                 break
+//             }
+//         }
+//     }
 
-    heapSort() {
-        for (let i = this.heap.length - 1; i > 0; i--) {
-            this.swap(0, i)
-            this.maxHeapify(i, 0)
-        }
-        return this.heap
-    }
+//     heapSort() {
+//         for (let i = this.heap.length - 1; i > 0; i--) {
+//             this.swap(0, i)
+//             this.maxHeapify(i, 0)
+//         }
+//         return this.heap
+//     }
 
-    maxHeapify(heapSize, rootIndex){
-        let leftChild = 2*rootIndex + 1
-        let rightChild = 2*rootIndex +2
-        let largestIndex = rootIndex
-        console.log(this.heap[largestIndex]);
-        
+//     maxHeapify(heapSize, rootIndex){
+//         let leftChild = 2*rootIndex + 1
+//         let rightChild = 2*rootIndex +2
+//         let largestIndex = rootIndex
+//         console.log(this.heap[largestIndex]);
+
+//     }
+// }
+
+// const heap = new MaxHeap()
+// heap.insert(10)
+// heap.insert(20)
+// heap.insert(44)
+// heap.insert(22)
+// heap.insert(60)
+// console.log(heap.heap);
+// heap.delete()
+// console.log(heap.heap);
+// heap.delete()
+// console.log(heap.heap);
+
+
+class TrieNode {
+    constructor(){
+        this.end = false
+        this.children = {}
     }
 }
 
-const heap = new MaxHeap()
-heap.insert(10)
-heap.insert(20)
-heap.insert(44)
-heap.insert(22)
-heap.insert(60)
-console.log(heap.heap);
-heap.delete()
-console.log(heap.heap);
-heap.delete()
-console.log(heap.heap);
+class Trie {
+    constructor(){
+        this.root = new TrieNode()
+    }
+
+    insert(word){
+        let currentNode = this.root
+        for(let i=0;i<word.length;i++){
+            let char = word[i]
+            if(!currentNode.children[char]){
+                currentNode.children[char] = new TrieNode()
+            }
+            currentNode = currentNode.children[char]
+        }
+        currentNode.end = true
+    }
+
+    search(word){
+        let currentNode = this.root
+        let foundWord = ""
+        for(let i=0;i<word.length;i++){
+            let char = word[i]
+            if(!currentNode.children[char]){
+                return false
+            }
+            currentNode = currentNode.children[char]
+            foundWord+=char
+        }
+        return currentNode.end 
+    }
+
+    startWith(prefix){
+        let currentNode = this.root
+        for(let i=0;i<prefix.length;i++){
+            let char = prefix[i]
+            if(!currentNode.children[char]){
+                return false
+            }
+            currentNode = currentNode.children[char]
+        }
+        return true
+    }
+}
+
+
+const trie = new Trie()
+trie.insert("navani")
+trie.insert("unni")
+console.log(trie.search("unni"));
+console.log(trie.startWith("na"));
