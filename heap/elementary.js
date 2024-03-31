@@ -70,6 +70,33 @@ class MaxHeap {
             }
         }
     }
+
+    heapSort(){
+        for(let i=this.heap.length -1;i>0;i--){
+            this.swap(i,0)
+            this.maxHepify(i, 0)
+        }
+        return this.heap
+    }
+
+    maxHepify(heapSize, rootIndex){
+        const leftIndex = 2*rootIndex+1
+        const rightIndex = 2*rootIndex+2
+        let largestIndex = rootIndex
+        console.log(this.heap[largestIndex]);
+        if(leftIndex < heapSize && this.heap[leftIndex] > this.heap[largestIndex]){
+            largestIndex = leftIndex
+        }
+        if(rightIndex < heapSize && this.heap[rightIndex] > this.heap[largestIndex]){
+            largestIndex = rightIndex
+        }
+        if(largestIndex !== rootIndex){
+            this.swap(rootIndex,largestIndex)
+            this.maxHepify(heapSize, largestIndex)
+        }else{
+            return
+        }
+    }
 }
 
 const heap = new MaxHeap()
@@ -79,7 +106,7 @@ heap.insert(44)
 heap.insert(22)
 heap.insert(60)
 console.log(heap.heap);
-heap.delete()
+// heap.delete()
 console.log(heap.heap);
-heap.delete()
+heap.heapSort()
 console.log(heap.heap);
