@@ -61,4 +61,4 @@ bst.insert(2)
 bst.insert(15)
 bst.insert(40)
 console.log("isEmpty : ",bst.isEmpty());
-bst.levelOrder()
+// bst.levelOrder()
