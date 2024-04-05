@@ -3,18 +3,18 @@ let str = "apple"
 function rotateString(str, k) {
     k = k % str.length
     let arr = str.split('')
-    for(let i=0;i<k;i++){
+    for (let i = 0; i < k; i++) {
         let temp = arr[i]
-        for(let j=1;j<arr.length;j++){
-            arr[j] = arr[j+1]
+        for (let j = 1; j < arr.length; j++) {
+            arr[j] = arr[j + 1]
         }
-        arr[arr.length-1] = temp
+        arr[arr.length - 1] = temp
     }
     return arr.join('')
 }
 
-function reverse(arr, start, end){
-    while(start<end){
+function reverse(arr, start, end) {
+    while (start < end) {
         let temp = arr[start]
         arr[start] = arr[end]
         arr[end] = temp
@@ -26,7 +26,7 @@ function reverse(arr, start, end){
 console.log(rotateString(str, 1));
 
 
-function swapString(str, i, j){
+function swapString(str, i, j) {
     let arr = str.split('')
     let temp = arr[i]
     arr[i] = arr[j]
@@ -35,3 +35,15 @@ function swapString(str, i, j){
 }
 
 console.log(swapString(str, 0, 4));
+
+
+function reverseString(str, start = 0, end = str.length - 1) {
+    let arr = str.split('')
+    if (start >= end) {
+        return arr.join('');
+    }
+    [arr[start], arr[end]] = [arr[end], arr[start]]
+    return reverseString(arr.join(''), start + 1, end - 1)
+}
+
+console.log(reverseString(str));
